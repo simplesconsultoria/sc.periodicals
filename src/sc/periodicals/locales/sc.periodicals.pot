@@ -1,0 +1,59 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2013-01-11 19:42+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+
+#: sc/periodicals/profiles/default/types/Periodical.xml
+msgid "A periodical"
+msgstr ""
+
+#: sc/periodicals/templates/view.pt:40
+msgid "Articles"
+msgstr ""
+
+#: sc/periodicals/content.py:34
+msgid "Circulation date"
+msgstr ""
+
+#: sc/periodicals/content.py:27
+msgid "Cover image"
+msgstr ""
+
+#: sc/periodicals/content.py:20
+msgid "Edition number"
+msgstr ""
+
+#: sc/periodicals/profiles/default/types/Periodical.xml
+msgid "Periodical"
+msgstr ""
+
+#: sc/periodicals/content.py:35
+msgid "help_circulation_date"
+msgstr ""
+
+#. Default: "A cover image for periodical."
+#: sc/periodicals/content.py:28
+msgid "help_cover_image"
+msgstr ""
+
+#. Default: "A number for this edition."
+#: sc/periodicals/content.py:21
+msgid "help_edition_number"
+msgstr ""
+
+#. Default: "Read More…"
+#: sc/periodicals/templates/view.pt:84
+msgid "read_more"
+msgstr ""
+

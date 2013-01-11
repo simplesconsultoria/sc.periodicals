@@ -1,1 +1,10 @@
 setuptools
+Pillow
+Products.CMFPlone>=4.2
+collective.nitf
+plone.namedfile[blobs]
+plone.formwidget.namedfile
+plone.app.dexterity[grok]
+
+[test]
+plone.app.testing

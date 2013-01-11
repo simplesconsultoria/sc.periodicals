@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 import os
 
 version = '0.1'
-description = "A content type to register editions of a printed publication."
+description = "A content type to register periodicals of a printed publication."
 long_description = open("README.txt").read() + "\n" +\
                    open(os.path.join("docs", "INSTALL.txt")).read() + "\n" +\
                    open(os.path.join("docs", "CREDITS.txt")).read() + "\n" +\
@@ -29,12 +29,13 @@ setup(name='sc.periodicals',
         "Topic :: Office/Business :: News/Diary",
         "Topic :: Software Development :: Libraries :: Python Modules",
         ],
-    keywords='plone dexterity periodicals simples_consultoria',
+    keywords='plone dexterity periodicals edition simples_consultoria',
       author='Gustavo Lepri',
       author_email='lepri@simplesconsultoria.com.br',
       url='https://github.com/simplesconsultoria/sc.periodicals/',
       license='GPLv2',
-      packages=find_packages(exclude=['ez_setup']),
+      packages=find_packages('src'),
+      package_dir={'': 'src'},
       namespace_packages=['sc'],
       include_package_data=True,
       zip_safe=False,
@@ -43,6 +44,8 @@ setup(name='sc.periodicals',
         'Pillow',
         'Products.CMFPlone>=4.2',
         'collective.nitf',
+        'plone.namedfile[blobs]',
+        'plone.formwidget.namedfile',
         'plone.app.dexterity[grok]',
         ],
     extras_require={

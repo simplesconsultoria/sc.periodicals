@@ -1,17 +1,99 @@
 Metadata-Version: 1.0
 Name: sc.periodicals
 Version: 0.1
-Summary: UNKNOWN
-Home-page: http://svn.plone.org/svn/collective/
-Author: UNKNOWN
-Author-email: UNKNOWN
-License: GPL
-Description: Introduction
-        ============
+Summary: A content type to register periodicals of a printed publication.
+Home-page: https://github.com/simplesconsultoria/sc.periodicals/
+Author: Gustavo Lepri
+Author-email: lepri@simplesconsultoria.com.br
+License: GPLv2
+Description: ==============
+        sc.periodicals
+        ==============
+        
+        .. contents:: Table of Contents
+        
+        Life, the Universe, and Everything
+        ----------------------------------
+        
+        Periodicals in Plone are a folderish content type: they can contain a cover title,
+        a description, a circulation date, a cover image and some basic metadata.
+        And you can add `News article`_ content type to include articles in the periodical.
+        
+        Mostly Harmless
+        ---------------
+        
+        .. image:: https://secure.travis-ci.org/simplesconsultoria/sc.periodicals.png
+            :target: http://travis-ci.org/simplesconsultoria/sc.periodicals
+        
+        Have an idea? Found a bug? Let us know by `opening a support ticket`_.
+        
+        .. _`_News article`: http://pypi.python.org/pypi/collective.nitf
+        .. _`opening a support ticket`: https://github.com/simplesconsultoria/sc.periodicals/issues
         
         
+        sc.periodicals Installation
+        ---------------------------
         
-        This product may contain traces of nuts.
+        To install sc.periodicals into the global Python environment (or a workingenv),
+        using a traditional Zope 2 instance, you can do this:
+        
+        * When you're reading this you have probably already run 
+          ``easy_install sc.periodicals``. Find out how to install setuptools
+          (and EasyInstall) here:
+          http://peak.telecommunity.com/DevCenter/EasyInstall
+        
+        * If you are using Zope 2.9 (not 2.10), get `pythonproducts`_ and install it 
+          via::
+        
+            python setup.py install --home /path/to/instance
+        
+        into your Zope instance.
+        
+        * Create a file called ``sc.periodicals-configure.zcml`` in the
+          ``/path/to/instance/etc/package-includes`` directory.  The file
+          should only contain this::
+        
+            <include package="sc.periodicals" />
+        
+        .. _pythonproducts: http://plone.org/products/pythonproducts
+        
+        
+        Alternatively, if you are using zc.buildout and the plone.recipe.zope2instance
+        recipe to manage your project, you can do this:
+        
+        * Add ``sc.periodicals`` to the list of eggs to install, e.g.:
+        
+            [buildout]
+            ...
+            eggs =
+                ...
+                sc.periodicals
+               
+        * Tell the plone.recipe.zope2instance recipe to install a ZCML slug:
+        
+            [instance]
+            recipe = plone.recipe.zope2instance
+            ...
+            zcml =
+                sc.periodicals
+              
+        * Re-run buildout, e.g. with:
+        
+            $ ./bin/buildout
+                
+        You can skip the ZCML slug if you are going to explicitly include the package
+        from another package's configure.zcml file.
+        
+        Share and Enjoy
+        ---------------
+        
+        sc.periodicals would not have been possible without the contribution of the
+        following people:
+        
+        - Gustavo Lepri
+        
+        Development sponsored by Simples Consultoria.
+        
         
         Changelog
         =========
@@ -21,6 +103,20 @@ Description: Introduction
         
         - Initial release
         
+Keywords: plone dexterity periodicals edition simples_consultoria
 Platform: UNKNOWN
+Classifier: Development Status :: 1 - Alpha
+Classifier: Environment :: Web Environment
 Classifier: Framework :: Plone
+Classifier: Framework :: Plone :: 4.2
+Classifier: Framework :: Plone :: 4.3
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: GNU General Public License v2 (GPLv2)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: JavaScript
 Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Topic :: Office/Business :: News/Diary
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
