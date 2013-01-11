@@ -26,6 +26,5 @@ class View(dexterity.DisplayForm):
         """
         catalog = getToolByName(self.context, 'portal_catalog')
         path = '/'.join(self.context.getPhysicalPath())
-        brains = catalog(object_provides=INITF.__identifier__,
-            path=path, sort_on='getObjPositionInParent')
+        brains = catalog(object_provides=INITF.__identifier__, path=path, sort_on='getObjPositionInParent')
         return brains

@@ -50,4 +50,3 @@ class UninstallTest(unittest.TestCase):
         layers = [l.getName() for l in registered_layers()]
         self.assertFalse('IPeriodicalLayer' in layers,
                          'add-on layer was not removed')
-

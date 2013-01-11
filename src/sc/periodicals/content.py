@@ -18,22 +18,18 @@ class IPeriodical(form.Schema):
     form.order_before(number='IDublinCore.title')
     number = schema.Int(
         title=_(u'Edition number'),
-        description=_(u'help_edition_number',
-            default=u'A number for this edition.'),
+        description=_(u'help_edition_number', default=u'A number for this edition.'),
         required=True,
     )
 
     cover_image = NamedBlobImage(
         title=_(u'Cover image'),
-        description=_(u'help_cover_image',
-            default=u'A cover image for periodical.'),
+        description=_(u'help_cover_image', default=u'A cover image for periodical.'),
         required=False,
     )
 
     circulation_date = schema.Date(
-        title=_(u'Circulation date'),
-        description=_(u'help_circulation_date',
-            default=u''),
+        title=_(u'Circulation date'), description=_(u'help_circulation_date'),
         required=False,
     )
 
