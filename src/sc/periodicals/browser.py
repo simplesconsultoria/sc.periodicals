@@ -28,3 +28,11 @@ class View(dexterity.DisplayForm):
         path = '/'.join(self.context.getPhysicalPath())
         brains = catalog(object_provides=INITF.__identifier__, path=path, sort_on='getObjPositionInParent')
         return brains
+
+    def getImage(self):
+        catalog = getToolByName(self.context, 'portal_catalog')
+        path = '/'.join(self.context.getPhysicalPath())
+        images = catalog(Type='Image', path=path, sort_on='getObjPositionInParent')
+        if len(images) > 0:
+            return images[0].getObject()
+        return None

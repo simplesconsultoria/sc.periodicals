@@ -50,13 +50,14 @@
                                        item_creator item/Creator;
                                        item_modified item/ModificationDate;">
                     <div class="tileItem visualIEFloatFix"
-                         tal:define="obj item/getObject">
+                         tal:define="obj item/getObject;
+                                     image view/getImage">
                         <a href="#"
-                           tal:condition="obj/image|nothing"
+                           tal:condition="image"
                            tal:attributes="href item/getURL">
                             <div class="tileImage">
                                 <img src="" alt=""
-                                     tal:define="scales obj/@@images;
+                                     tal:define="scales image/@@images;
                                        scale python:scales.scale('image', 'thumb')"
                                      tal:replace="structure python:scale and scale.tag(css_class='tileImage') or None" />
                             </div>
