@@ -36,16 +36,3 @@ class IPeriodical(form.Schema):
 
 class Periodical(Container):
     grok.implements(IPeriodical)
-
-
-# TODO: move this to Dexterity's core
-@form.default_value(field=IDublinCore['language'])
-def language_default_value(data):
-    """ Returns portal's default language or None.
-    """
-    portal_properties = getToolByName(data, "portal_properties", None)
-    if portal_properties is not None:
-        site_properties = getattr(portal_properties, 'site_properties', None)
-        if site_properties is not None:
-            if site_properties.hasProperty('default_language'):
-                return site_properties.getProperty('default_language')

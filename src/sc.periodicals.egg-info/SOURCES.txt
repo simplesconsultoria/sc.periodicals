@@ -1,4 +1,5 @@
 .gitignore
+.travis.yml
 MANIFEST.in
 Makefile
 README.rst
@@ -37,7 +38,6 @@ src/sc/periodicals/content.py
 src/sc/periodicals/interfaces.py
 src/sc/periodicals/profiles.zcml
 src/sc/periodicals/testing.py
-src/sc/periodicals/tests.py
 src/sc/periodicals/Extensions/Install.py
 src/sc/periodicals/Extensions/__init__.py
 src/sc/periodicals/locales/manual.pot
@@ -53,7 +53,9 @@ src/sc/periodicals/profiles/default/rolemap.xml
 src/sc/periodicals/profiles/default/sc.periodicals.marker.txt
 src/sc/periodicals/profiles/default/types.xml
 src/sc/periodicals/profiles/default/types/Periodical.xml
+src/sc/periodicals/static/periodical_icon.png
 src/sc/periodicals/templates/view.pt
 src/sc/periodicals/tests/__init__.py
 src/sc/periodicals/tests/test_content.py
 src/sc/periodicals/tests/test_setup.py
+src/sc/periodicals/tests/test_views.py
