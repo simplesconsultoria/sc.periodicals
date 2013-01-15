@@ -11,7 +11,7 @@ SHELL = /bin/sh
 
 options = -N -q -t 3
 src = src/sc/periodicals/
-minimum_coverage = 50
+minimum_coverage = 90
 pep8_ignores = E501
 max_complexity = 12
 css_ignores = ! -name jquery\*
