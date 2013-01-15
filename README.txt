@@ -11,6 +11,17 @@ Periodicals in Plone are a folderish content type: they can contain a cover titl
 a description, a circulation date, a cover image and some basic metadata.
 And you can add `News article`_ content type to include articles in the periodical.
 
+For news and magazines portals it's important to include printed editions
+in the portal for user that like to read it on the internet.
+
+Periodical is intended to structure an edition of a printed periodical and its
+articles.
+
+Don't Panic
+-----------
+
+TBA.
+
 Mostly Harmless
 ---------------
 
