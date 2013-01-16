@@ -53,8 +53,7 @@ class DefaultViewTestCase(unittest.TestCase):
 
         self.p1.invokeFactory('collective.nitf.content', 'n1')
         n1 = self.p1['n1']
-        n1.invokeFactory('Image', 'foo', title='bar', description='baz',
-                              image=StringIO(zptlogo))
+        n1.invokeFactory('Image', 'foo', title='bar', description='baz', image=StringIO(zptlogo))
         image = view.getImage()
         self.assertEqual(len(image), 1)
         self.assertEqual(image.id, 'foo')

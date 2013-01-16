@@ -2,11 +2,9 @@
 
 from sc.periodicals import _
 from five import grok
-from plone.app.dexterity.behaviors.metadata import IDublinCore
 from plone.dexterity.content import Container
 from plone.directives import form
 from zope import schema
-from Products.CMFCore.utils import getToolByName
 
 from plone.namedfile.field import NamedBlobImage
 
