@@ -43,7 +43,7 @@ js-validation: ack-install jshint-install
 	@echo Validating JavaScript files
 	find $(src) -type f -name *.js $(js_ignores) -exec jshint {} ';' | ack-grep --passthru error
 
-quality-assurance: python-validation css-validation js-validation
+quality-assurance: python-validation 
 	@echo Quality assurance
 	./coverage.sh $(minimum_coverage)
 
