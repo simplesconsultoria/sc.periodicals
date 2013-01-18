@@ -6,10 +6,10 @@
     i18n_domain="sc.periodicals">
 
   <five:registerPackage package="." />
-
   <i18n:registerTranslations directory="locales" />
-
   <includeDependencies package="." />
+
+  <include package=".portlets" />
 
   <grok:grok package="." />
 

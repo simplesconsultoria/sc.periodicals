@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      tal:omit-tag="">
+<dl class="portlet portletCollection portlet-last-edition"
+    i18n:domain="sc.periodicals"
+    tal:define="portal_state context/@@plone_portal_state;
+                portal_url portal_state/portal_url;
+                periodical view/get_last_edition">
+
+    <dt tal:condition="view/getHeader|nothing"
+        class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span tal:content="view/getHeader|nothing" />
+        <span class="portletTopRight"></span>
+    </dt>
+    <tal:block tal:condition="periodical|nothing">
+    <div tal:define="obj python:periodical.getObject();
+                     cover_image python:obj.cover_image"
+         style="float: left;">
+        <a href=""
+           tal:attributes="href periodical/getURL">
+            <img tal:define="scale obj/@@images"
+                 tal:replace="structure python: scale.scale('cover_image', scale='thumb').tag()" />
+        </a>
+    </div>
+    <div tal:define="articles view/get_articles"
+         style="float: right; width: 50%;">
+        <div tal:repeat="article articles">
+            <a href=""
+               tal:attributes="href article/getURL">
+                <h3 tal:content="article/Title"></h3>
+            </a>
+            <p tal:content="article/Description"></p>
+        </div>
+    </div>
+    <div class="visualClear"></div>
+    </tal:block>
+
+    <dd class="portletFooter">
+        <span class="portletBottomLeft"></span>
+        <span class="portletBottomRight"></span>
+    </dd>
+
+</dl>
+</html>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<portlets xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+   i18n:domain="plone">
+ <portlet title="Last Edition"
+    addview="sc.periodicals.LastEditionPortlet"
+    description="A portlet which shows the last edition of a periodical."
+    i18n:attributes="title; description">
+  <for interface="plone.app.portlets.interfaces.IColumn" />
+  <for interface="plone.app.portlets.interfaces.IDashboard" />
+ </portlet>
+</portlets>
