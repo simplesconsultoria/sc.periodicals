@@ -47,6 +47,7 @@ setup(name='sc.periodicals',
         'plone.namedfile[blobs]',
         'plone.formwidget.namedfile',
         'plone.app.dexterity[grok]',
+        'plone.behavior',
         ],
     extras_require={
         'test': ['plone.app.testing'],
