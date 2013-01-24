@@ -22,7 +22,7 @@
 <metal:main fill-slot="content-core">
     <tal:content-core metal:define-macro="content-core">
         <tal:content-description metal:define-macro="content-description">
-            <div style="width: 70%; float: left;" class="documentDescription" tal:content="context/description" />
+            <div class="documentDescription" tal:content="context/description" />
         </tal:content-description>
         <div class="newsImageContainer"
              tal:define="cover_image nocall:context/cover_image"
@@ -31,7 +31,6 @@
                  tal:replace="structure python: scale.scale('cover_image', scale='mini').tag()" />
         </div>
     </tal:content-core>
-    <div class="visualClear"><!-- --></div>
     <tal:results define="results view/results;
                          normalizeString nocall: context/plone_utils/normalizeString;
                          toLocalizedTime nocall: context/@@plone/toLocalizedTime;">
