@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-01-11 19:42+0000\n"
-"PO-Revision-Date: 2013-01-11 17:47-0300\n"
+"POT-Creation-Date: 2013-01-23 17:08+0000\n"
+"PO-Revision-Date: 2013-01-23 15:08-0300\n"
 "Last-Translator: Gustavo Lepri <lepri@simplesconsultoria.com.br>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -19,42 +19,75 @@ msgstr ""
 msgid "A periodical"
 msgstr "Um períodico"
 
+#: sc/periodicals/profiles/default/portlets.xml
+msgid "A portlet which shows the last edition of a periodical."
+msgstr "Um portlet que exibe a última edição de um periódico."
+
+#: sc/periodicals/portlets/last_edition.py:114
+msgid "Add last edition Portlet"
+msgstr "Adicionar portlet da última edição"
+
 #: sc/periodicals/templates/view.pt:40
 msgid "Articles"
 msgstr "Artigos"
 
-#: sc/periodicals/content.py:34
+#: sc/periodicals/content.py:30
 msgid "Circulation date"
 msgstr "Data de circulação"
 
-#: sc/periodicals/content.py:27
+#: sc/periodicals/content.py:24
 msgid "Cover image"
 msgstr "Imagem de capa"
 
-#: sc/periodicals/content.py:20
+#: sc/periodicals/portlets/last_edition.py:125
+msgid "Edit last edition Portlet"
+msgstr "Editar portlet da última edição"
+
+#: sc/periodicals/templates/view.pt:13
+msgid "Edition ${edition_number}"
+msgstr "Edição ${edition_number}"
+
+#: sc/periodicals/content.py:18
 msgid "Edition number"
 msgstr "Número da edição"
+
+#: sc/periodicals/portlets/last_edition.py:21
+msgid "Header"
+msgstr "Cabeçalho"
+
+#: sc/periodicals/portlets/last_edition.py:46
+#: sc/periodicals/profiles/default/portlets.xml
+msgid "Last Edition"
+msgstr "Última Edição"
 
 #: sc/periodicals/profiles/default/types/Periodical.xml
 msgid "Periodical"
 msgstr "Periódico"
 
-#: sc/periodicals/content.py:35
+#: sc/periodicals/portlets/last_edition.py:22
+msgid "The header for the portlet. Leave empty for none."
+msgstr "O cabeçalho para o portlet. Deixe vazio para nenhum."
+
+#: sc/periodicals/portlets/last_edition.py:115
+msgid "This portlet display the last edition of a periodical."
+msgstr "Este portlet exibe a última edição de um periódico."
+
+#: sc/periodicals/content.py:30
 msgid "help_circulation_date"
-msgstr ""
+msgstr " "
 
 #. Default: "A cover image for periodical."
-#: sc/periodicals/content.py:28
+#: sc/periodicals/content.py:25
 msgid "help_cover_image"
 msgstr "A imagem de capa do periódico."
 
 #. Default: "A number for this edition."
-#: sc/periodicals/content.py:21
+#: sc/periodicals/content.py:19
 msgid "help_edition_number"
 msgstr "O número da edição."
 
 #. Default: "Read More…"
-#: sc/periodicals/templates/view.pt:84
+#: sc/periodicals/templates/view.pt:85
 msgid "read_more"
-msgstr "Leis Mais..."
+msgstr "Leia Mais..."
 
