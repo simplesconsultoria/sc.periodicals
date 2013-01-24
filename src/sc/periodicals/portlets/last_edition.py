@@ -2,6 +2,7 @@
 
 from sc.periodicals import _
 from sc.periodicals.content import IPeriodical
+from sc.periodicals.vocab import thumbnail_sizes_vocabulary
 from collective.nitf.content import INITF
 from plone.app.portlets.portlets import base
 from plone.portlets.interfaces import IPortletDataProvider
@@ -10,6 +11,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope import schema
 from zope.formlib import form
 from zope.interface import implements
+from Acquisition import aq_inner
 
 
 class ILastEditionPortlet(IPortletDataProvider):
@@ -20,6 +22,22 @@ class ILastEditionPortlet(IPortletDataProvider):
     header = schema.TextLine(
         title=_(u'Header'),
         description=_(u"The header for the portlet. Leave empty for none."),
+        required=False)
+
+    size = schema.Choice(
+        title=u"Image size",
+        required=True,
+        default='thumb',
+        source=thumbnail_sizes_vocabulary)
+
+    quantity = schema.Int(
+        title=_(u'Articles quantity'),
+        description=_(u'Quantity of articles in portlet'),
+        required=False,
+        default=2)
+
+    text = schema.Text(
+        title=_(u'Text'),
         required=False)
 
 
@@ -34,9 +52,12 @@ class Assignment(base.Assignment):
 
     header = u""
 
-    def __init__(self, header=u""):
+    def __init__(self, header=u"", size=None, quantity=2, text=u""):
 
         self.header = header
+        self.size = size
+        self.quantity = quantity
+        self.text = text
 
     @property
     def title(self):
@@ -57,13 +78,13 @@ class Renderer(base.Renderer):
 
     def getHeader(self):
         """
-        Returns the header for the portlet
+        @return: returns the header for the portlet
         """
         return self.data.header
 
     def get_last_edition(self):
         """
-        @return:returns the catalog results (brains) if exists
+        @return: returns the catalog results (brains) if exists
         """
         catalog = getToolByName(self, 'portal_catalog')
         results = catalog(
@@ -83,6 +104,9 @@ class Renderer(base.Renderer):
         """
         catalog = getToolByName(self, 'portal_catalog')
 
+        quantity = self.data.quantity
+        if not quantity:
+            quantity = 2
         last_edition = self.get_last_edition()
         if last_edition:
             periodical = last_edition.getObject()
@@ -94,9 +118,8 @@ class Renderer(base.Renderer):
             articles = catalog(
                 object_provides=INITF.__identifier__,
                 path='/'.join(periodical.getPhysicalPath()),
-                sort_on='created',
-                sort_order='descending',
-                sort_limit=2,
+                sort_on='getObjPositionInParent',
+                sort_limit=quantity,
                 review_state='published',
             )
             if articles:
@@ -105,6 +128,39 @@ class Renderer(base.Renderer):
                 return None
         else:
             return None
+
+    def get_size(self):
+        return self.data.size
+
+    def get_text(self, mt='text/x-html-safe'):
+        """Use the safe_html transform to protect text output. This also
+        ensures that resolve UID links are transformed into real links.
+
+        Function retired from plone.portlet.static
+        """
+        orig = self.data.text
+        if not orig:
+            orig = u""
+        context = aq_inner(self.context)
+        if not isinstance(orig, unicode):
+            # Apply a potentially lossy transformation, and hope we stored
+            # utf-8 text. There were bugs in earlier versions of this portlet
+            # which stored text directly as sent by the browser, which could
+            # be any encoding in the world.
+            orig = unicode(orig, 'utf-8', 'ignore')
+
+        # Portal transforms needs encoded strings
+        orig = orig.encode('utf-8')
+
+        transformer = getToolByName(context, 'portal_transforms')
+        data = transformer.convertTo(mt, orig,
+                                     context=context, mimetype='text/html')
+        result = data.getData()
+        if result:
+            if isinstance(result, str):
+                return unicode(result, 'utf-8')
+            return result
+        return None
 
 
 class AddForm(base.AddForm):
