@@ -125,8 +125,7 @@ class RenderTest(unittest.TestCase):
             self.wf.doActionFor(n, "publish")
 
         self.default_query = {'Type': ('News Article',),
-                              'sort_on': 'created',
-                              'sort_order': 'reverse',
+                              'sort_on': 'getObjPositionInParent',
                               'sort_limit': 2}
 
     def renderer(self, context=None, request=None, view=None, manager=None,
@@ -198,3 +197,41 @@ class RenderTest(unittest.TestCase):
             [i.id for i in r1.get_articles()],
             [i.id for i in catalog_results]
         )
+
+    def test_text_in_portlet(self):
+
+        assgmnt1 = last_edition.Assignment(text=u'Praesent augue lorem, sagittis ut.')
+
+        r1 = self.renderer(context=self.portal, assignment=assgmnt1)
+
+        r1 = r1.__of__(self.portal)
+
+        self.assertTrue(r1.get_text() == u'Praesent augue lorem, sagittis ut.')
+
+    def test_thumbnail_size(self):
+
+        assgmnt1 = last_edition.Assignment(size='tile')
+
+        r1 = self.renderer(context=self.portal, assignment=assgmnt1)
+
+        r1 = r1.__of__(self.portal)
+
+        self.assertTrue(r1.get_size() == 'tile')
+
+    def test_quantity(self):
+
+        assgmnt1 = last_edition.Assignment(quantity=3)
+
+        r1 = self.renderer(context=self.portal, assignment=assgmnt1)
+
+        r1 = r1.__of__(self.portal)
+
+        self.assertTrue(r1.data.quantity == 3)
+
+        assgmnt1 = last_edition.Assignment()
+
+        r1 = self.renderer(context=self.portal, assignment=assgmnt1)
+
+        r1 = r1.__of__(self.portal)
+
+        self.assertTrue(r1.data.quantity == 2)
