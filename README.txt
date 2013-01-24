@@ -29,8 +29,9 @@ It's possible to include a portlet to show the last periodical and its articles.
 It's a very simple portlet. You just need to enter a name for header (optional).
 Other information is not necessary.
 
-The portlet will show the last published periodical and another 2 articles.
-These articles should be published too. It will show the articles in the order
+The portlet will show the last published periodical and another articles that
+quantity can be configured. And the size of image too.
+These articles should be published. It will show the articles in the order
 that appear in the periodical.
 
 Mostly Harmless
