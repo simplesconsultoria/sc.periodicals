@@ -4,7 +4,7 @@ from five import grok
 from plone.app.imaging.utils import getAllowedSizes
 
 from zope.schema.interfaces import IContextSourceBinder
-from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
+from zope.schema.vocabulary import SimpleVocabulary
 
 
 @grok.provider(IContextSourceBinder)
