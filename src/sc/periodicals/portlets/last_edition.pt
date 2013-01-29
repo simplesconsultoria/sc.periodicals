@@ -6,7 +6,8 @@
     i18n:domain="sc.periodicals"
     tal:define="portal_state context/@@plone_portal_state;
                 portal_url portal_state/portal_url;
-                periodical view/get_last_edition">
+                periodical view/get_last_edition;
+                text view/get_text">
 
     <dt tal:condition="view/getHeader|nothing"
         class="portletHeader">
@@ -16,26 +17,28 @@
     </dt>
     <tal:block tal:condition="periodical|nothing">
     <div tal:define="obj python:periodical.getObject();
-                     cover_image python:obj.cover_image"
-         style="float: left;">
+                     cover_image python:obj.cover_image">
         <a href=""
+           tal:condition="cover_image|nothing"
            tal:attributes="href periodical/getURL">
-            <img tal:define="scale obj/@@images"
-                 tal:replace="structure python: scale.scale('cover_image', scale='thumb').tag()" />
+            <img tal:define="scale obj/@@images;
+                             size view/get_size"
+                 tal:replace="structure python: scale.scale('cover_image', scale=size).tag()" />
         </a>
     </div>
-    <div tal:define="articles view/get_articles"
-         style="float: right; width: 50%;">
+    <div tal:define="articles view/get_articles">
         <div tal:repeat="article articles">
             <a href=""
                tal:attributes="href article/getURL">
                 <h3 tal:content="article/Title"></h3>
             </a>
-            <p tal:content="article/Description"></p>
+            <p tal:content="article/subtitle"></p>
         </div>
     </div>
     <div class="visualClear"></div>
     </tal:block>
+
+    <div class="portlet-edition-text" tal:replace="structure view/get_text" />
 
     <dd class="portletFooter">
         <span class="portletBottomLeft"></span>
