@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:grok="http://namespaces.zope.org/grok"
+    i18n_domain="sc.periodicals">
+
+  <include package="plone.behavior" file="meta.zcml" />
+
+  <include package="plone.directives.form" file="meta.zcml" />
+  <include package="plone.directives.form" />
+
+  <grok:grok package=".behavior" />
+
+  <plone:behavior
+      title="Name from edition"
+      description="Use the edition number to generate a name."
+      provides=".interfaces.INameFromEdition"
+      factory=".behavior.NameFromEdition"
+      for=".content.IPeriodical"
+      />
+
+</configure>
