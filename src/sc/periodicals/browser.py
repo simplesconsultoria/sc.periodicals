@@ -7,7 +7,6 @@ from five import grok
 from plone.directives import dexterity
 from Products.CMFPlone.utils import getToolByName
 from collective.nitf.content import INITF
-from collective.nitf.browser import View as NView
 
 grok.templatedir('templates')
 
@@ -37,15 +36,3 @@ class View(dexterity.DisplayForm):
         if len(images) > 0:
             return images[0].getObject()
         return None
-
-
-class NITFView(NView):
-    """ Customized view for collective.nitf.content
-    """
-    grok.context(INITF)
-    grok.require('zope2.View')
-    grok.layer(IPeriodicalLayer)
-    grok.name("nitf_view")
-
-    def update(self):
-        self.context = aq_inner(self.context)

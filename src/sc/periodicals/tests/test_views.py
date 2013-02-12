@@ -33,13 +33,6 @@ class DefaultViewTestCase(unittest.TestCase):
         registered = [v.name for v in registration.getViews(IPeriodicalLayer)]
         self.assertTrue('view' in registered)
 
-    def test_default_nitf_view_is_registered(self):
-        pt = self.portal['portal_types']
-        self.assertEqual(pt['collective.nitf.content'].default_view, 'nitf_view')
-
-        registered = [v.name for v in registration.getViews(IPeriodicalLayer)]
-        self.assertTrue('nitf_view' in registered)
-
     def test_results(self):
         view = getMultiAdapter((self.p1, self.request), name='view')
         self.assertEqual(len(view.results()), 0)
