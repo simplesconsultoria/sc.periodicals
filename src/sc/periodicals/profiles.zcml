@@ -7,7 +7,7 @@
   <genericsetup:registerProfile
       name="default"
       title="sc.periodicals"
-      description="A content type to register periodicals of a printed publication."
+      description="A content type to register periodicals of a publication."
       directory="profiles/default"
       provides="Products.GenericSetup.interfaces.EXTENSION" />
 
