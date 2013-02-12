@@ -10,33 +10,34 @@
 <div tal:replace="structure provider:plone.abovecontenttitle" />
 <metal:title fill-slot="content-title">
     <tal:content-title metal:define-macro="content-title">
-        <h2 i18n:translate="">Edition <span i18n:name="edition_number" tal:replace="context/number" /></h2>
-        <h1 class="documentFirstHeading"  tal:content="context/title" />
+        <p i18n:translate="">Number <span tal:replace="context/number" /></p>
+        <h1 class="documentFirstHeading" tal:content="context/title" />
     </tal:content-title>
 </metal:title>
 
 <metal:description fill-slot="content-description">
-
+    <tal:content-description metal:define-macro="content-description">
+        <div class="documentDescription" tal:content="context/description" />
+    </tal:content-description>
 </metal:description>
 
 <metal:main fill-slot="content-core">
     <tal:content-core metal:define-macro="content-core">
-        <tal:content-description metal:define-macro="content-description">
-            <div class="documentDescription" tal:content="context/description" />
-        </tal:content-description>
         <div class="newsImageContainer"
-             tal:define="cover_image nocall:context/cover_image"
-             tal:condition="nocall:cover_image">
+             tal:define="image nocall:context/image"
+             tal:condition="nocall:image">
             <img tal:define="scale context/@@images"
-                 tal:replace="structure python: scale.scale('cover_image', scale='mini').tag()" />
+                 tal:replace="structure python: scale.scale('image', scale='mini').tag()" />
         </div>
+        <div class="visualClear"><!-- --></div>
     </tal:content-core>
+
     <tal:results define="results view/results;
                          normalizeString nocall: context/plone_utils/normalizeString;
                          toLocalizedTime nocall: context/@@plone/toLocalizedTime;">
         <tal:listing condition="results">
             <br />
-            <h1 class="documentFirstHeading" i18n:translate="">Articles</h1>
+            <h2 i18n:translate="">Contents</h2>
             <dl>
                 <tal:entry tal:repeat="item results">
                     <tal:block tal:define="item_url item/getURL;

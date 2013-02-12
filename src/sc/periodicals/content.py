@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from sc.periodicals import _
 from five import grok
 from plone.dexterity.content import Container
 from plone.directives import form
-from zope import schema
-
 from plone.namedfile.field import NamedBlobImage
+from sc.periodicals import _
+from zope import schema
 
 
 class IPeriodical(form.Schema):
@@ -15,19 +14,25 @@ class IPeriodical(form.Schema):
 
     form.order_before(number='IDublinCore.title')
     number = schema.Int(
-        title=_(u'Edition number'),
-        description=_(u'help_edition_number', default=u'A number for this edition.'),
+        title=_(u'Number'),
+        description=_(u'help_number',
+            default=u"The number of the periodical."),
         required=True,
     )
 
-    cover_image = NamedBlobImage(
-        title=_(u'Cover image'),
-        description=_(u'help_cover_image', default=u'A cover image for periodical.'),
+    image = NamedBlobImage(
+        title=_(u'Image'),
+        description=_(u'help_image',
+            default=u"An image associated with the periodical. "
+                    u"For printed periodicals you should use the cover."),
         required=False,
     )
 
-    circulation_date = schema.Date(
-        title=_(u'Circulation date'), description=_(u'help_circulation_date'),
+    publication_date = schema.Date(
+        title=_(u'Publication Date'),
+        description=_(u'help_publication_date',
+            default=u"The publication date of the periodical "
+                    u"(do not confuse with the effective date)."),
         required=False,
     )
 
