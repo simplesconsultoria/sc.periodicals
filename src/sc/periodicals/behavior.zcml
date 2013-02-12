@@ -13,8 +13,8 @@
 
   <plone:behavior
       title="Name from edition"
-      description="Use the edition number to generate a name."
-      provides=".interfaces.INameFromEdition"
+      description="Use the periodical number to generate a name."
+      provides=".interfaces.INameFromNumber"
       factory=".behavior.NameFromEdition"
       for=".content.IPeriodical"
       />
