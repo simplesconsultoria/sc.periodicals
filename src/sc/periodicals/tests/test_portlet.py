@@ -16,13 +16,6 @@ from zope.component import getUtility, getMultiAdapter
 
 import unittest2 as unittest
 
-PLONE42 = True
-try:
-    import plone.app.collection
-    assert plone.app.collection  # Pyflakes
-except ImportError:
-    PLONE42 = False
-
 
 class PortletTest(unittest.TestCase):
 
@@ -145,7 +138,6 @@ class RenderTest(unittest.TestCase):
         assgmnt1 = last_edition.Assignment()
 
         r1 = self.renderer(context=self.portal, assignment=assgmnt1)
-
         r1 = r1.__of__(self.portal)
         r1.update()
 
@@ -154,17 +146,14 @@ class RenderTest(unittest.TestCase):
         assgmnt1 = last_edition.Assignment()
 
         r1 = self.renderer(context=self.portal, assignment=assgmnt1)
-
         r1 = r1.__of__(self.portal)
-
-        self.assertTrue(r1.getHeader() == u'')
+        self.assertEqual(r1.getHeader(), u'')
 
     def test_portlet_available(self):
 
         assgmnt1 = last_edition.Assignment()
 
         r1 = self.renderer(context=self.portal, assignment=assgmnt1)
-
         r1 = r1.__of__(self.portal)
 
         self.wf.doActionFor(self.p1, 'retract')
@@ -177,7 +166,6 @@ class RenderTest(unittest.TestCase):
         assgmnt1 = last_edition.Assignment()
 
         r1 = self.renderer(context=self.portal, assignment=assgmnt1)
-
         r1 = r1.__of__(self.portal)
 
         self.wf.doActionFor(self.p1, 'retract')
@@ -185,14 +173,11 @@ class RenderTest(unittest.TestCase):
         self.assertFalse(r1.get_articles())
 
         self.wf.doActionFor(self.p1, 'publish')
-
         self.assertTrue(r1.get_last_edition())
-
         self.assertEqual(len(r1.get_articles()), 2)
+
         query = self.default_query
-
         catalog_results = self.catalog(**query)
-
         self.assertEqual(
             [i.id for i in r1.get_articles()],
             [i.id for i in catalog_results]
@@ -203,9 +188,7 @@ class RenderTest(unittest.TestCase):
         assgmnt1 = last_edition.Assignment(text=u'Praesent augue lorem, sagittis ut.')
 
         r1 = self.renderer(context=self.portal, assignment=assgmnt1)
-
         r1 = r1.__of__(self.portal)
-
         self.assertTrue(r1.get_text() == u'Praesent augue lorem, sagittis ut.')
 
     def test_thumbnail_size(self):
@@ -213,9 +196,7 @@ class RenderTest(unittest.TestCase):
         assgmnt1 = last_edition.Assignment(size='tile')
 
         r1 = self.renderer(context=self.portal, assignment=assgmnt1)
-
         r1 = r1.__of__(self.portal)
-
         self.assertTrue(r1.get_size() == 'tile')
 
     def test_quantity(self):
@@ -223,15 +204,11 @@ class RenderTest(unittest.TestCase):
         assgmnt1 = last_edition.Assignment(quantity=3)
 
         r1 = self.renderer(context=self.portal, assignment=assgmnt1)
-
         r1 = r1.__of__(self.portal)
-
         self.assertTrue(r1.data.quantity == 3)
 
         assgmnt1 = last_edition.Assignment()
 
         r1 = self.renderer(context=self.portal, assignment=assgmnt1)
-
         r1 = r1.__of__(self.portal)
-
         self.assertTrue(r1.data.quantity == 2)

@@ -29,8 +29,8 @@ class InstallTestCase(unittest.TestCase):
 
     def test_addon_layer(self):
         layers = [l.getName() for l in registered_layers()]
-        self.assertTrue('IPeriodicalLayer' in layers,
-                        'add-on layer was not installed')
+        self.assertIn('IPeriodicalLayer', layers,
+                      'add-on layer was not installed')
 
 
 class UninstallTest(unittest.TestCase):
@@ -48,5 +48,5 @@ class UninstallTest(unittest.TestCase):
 
     def test_addon_layer_removed(self):
         layers = [l.getName() for l in registered_layers()]
-        self.assertFalse('IPeriodicalLayer' in layers,
+        self.assertNotIn('IPeriodicalLayer', layers,
                          'add-on layer was not removed')
