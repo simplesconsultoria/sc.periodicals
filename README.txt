@@ -7,32 +7,27 @@ sc.periodicals
 Life, the Universe, and Everything
 ----------------------------------
 
-Periodicals in Plone are a folderish content type: they can contain a cover title,
-a description, a circulation date, a cover image and some basic metadata.
-And you can add `News article`_ content type to include articles in the periodical.
+This package defines a folderish content type that defines a Periodical. A
+periodical has a number, an image associated and a publication date; it can
+contain only News Articles as defined in the `collective.nitf`_ package.
 
-For news and magazines portals it's important to include printed editions
-in the portal for user that like to read it on the internet.
-
-Periodical is intended to structure an edition of a printed periodical and its
-articles.
+The package also defines a portlet that displays the latest published
+periodical on the site.
 
 Don't Panic
 -----------
 
-TBA.
-
 Portlet
--------
+^^^^^^^
 
-It's possible to include a portlet to show the last periodical and its articles.
-It's a very simple portlet. You just need to enter a name for header (optional).
-Other information is not necessary.
+The package includes a portlet that shows the latest published periodical and
+its contained news articles.
 
-The portlet will show the last published periodical and another articles that
-quantity can be configured. And the size of image too.
-These articles should be published. It will show the articles in the order
-that appear in the periodical.
+- Go to the "Manage Portlets" page and select "Latest Periodical"
+- Enter a header (if needed), an image scale, the number of published News
+  Articles to display and a text.
+
+The portlet will be shown if at least one Periodical is published on the site.
 
 Mostly Harmless
 ---------------
@@ -40,8 +35,7 @@ Mostly Harmless
 .. image:: https://secure.travis-ci.org/simplesconsultoria/sc.periodicals.png
     :target: http://travis-ci.org/simplesconsultoria/sc.periodicals
 
-Have an idea? Found a bug? Let us know by `opening a support ticket`_.
+Got an idea? Found a bug? Let us know by `opening a support ticket`_.
 
-.. _`_News article`: http://pypi.python.org/pypi/collective.nitf
+.. _`collective.nitf`: http://pypi.python.org/pypi/collective.nitf
 .. _`opening a support ticket`: https://github.com/simplesconsultoria/sc.periodicals/issues
-

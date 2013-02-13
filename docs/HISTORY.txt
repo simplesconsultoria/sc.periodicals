@@ -1,8 +1,7 @@
 Changelog
-=========
+---------
 
-0.1dev (unreleased)
--------------------
+1.0a1 (unreleased)
+^^^^^^^^^^^^^^^^^^^^
 
-- Portlet to show the last periodical and its articles [lepri]
-- Initial release [lepri]
+- Initial release.
