@@ -5,13 +5,13 @@
     i18n_domain="sc.periodicals">
 
   <plone:portlet
-      name="sc.periodicals.LastEditionPortlet"
-      interface=".last_edition.ILastEditionPortlet"
-      assignment=".last_edition.Assignment"
+      name="sc.periodicals.LatestPeriodicalPortlet"
+      interface=".latest_periodical.ILatestPeriodicalPortlet"
+      assignment=".latest_periodical.Assignment"
       edit_permission="cmf.ManagePortal"
-      renderer=".last_edition.Renderer"
-      addview=".last_edition.AddForm"
-      editview=".last_edition.EditForm"
+      renderer=".latest_periodical.Renderer"
+      addview=".latest_periodical.AddForm"
+      editview=".latest_periodical.EditForm"
       />
         
 </configure>

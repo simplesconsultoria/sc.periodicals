@@ -6,42 +6,44 @@
     i18n:domain="sc.periodicals"
     tal:define="portal_state context/@@plone_portal_state;
                 portal_url portal_state/portal_url;
-                periodical view/get_last_edition;
+                periodical view/get_latest_periodical;
                 text view/get_text">
 
-    <dt tal:condition="view/getHeader|nothing"
+    <dt tal:condition="view/title|nothing"
         class="portletHeader">
         <span class="portletTopLeft"></span>
-        <span tal:content="view/getHeader|nothing" />
+        <span tal:content="view/title" />
         <span class="portletTopRight"></span>
     </dt>
+
+    <!-- TODO: fix this block of template -->
     <tal:block tal:condition="periodical|nothing">
     <div tal:define="obj python:periodical.getObject();
-                     cover_image python:obj.cover_image">
+                     image python:obj.image">
         <a href=""
-           tal:condition="cover_image|nothing"
+           tal:condition="image|nothing"
            tal:attributes="href periodical/getURL">
             <img tal:define="scale obj/@@images;
-                             size view/get_size"
-                 tal:replace="structure python: scale.scale('cover_image', scale=size).tag()" />
+                             image_scale view/get_image_scale"
+                 tal:replace="structure python: scale.scale('image', scale=image_scale).tag()" />
         </a>
+        <div class="visualClear"></div>
+        <h3 tal:content="view/get_periodical_title" />
+        <p tal:content="structure view/get_text" />
     </div>
-    <div tal:define="articles view/get_articles">
-        <div tal:repeat="article articles">
-            <a href=""
-               tal:attributes="href article/getURL">
-                <h3 tal:content="article/Title"></h3>
-            </a>
-            <p tal:content="article/subtitle"></p>
-        </div>
-    </div>
-    <div class="visualClear"></div>
-    </tal:block>
 
-    <div class="portlet-edition-text" tal:replace="structure view/get_text" />
+    <div tal:repeat="obj view/published_news_articles">
+        <a href=""
+           tal:attributes="href obj/getURL">
+            <h4 tal:content="obj/Title"></h4>
+        </a>
+        <p tal:content="obj/subtitle"></p>
+    </div>
+    </tal:block>
 
     <dd class="portletFooter">
         <span class="portletBottomLeft"></span>
+        <!-- TODO: add link to latests periodicals -->
         <span class="portletBottomRight"></span>
     </dd>
 

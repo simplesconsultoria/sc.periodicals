@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from sc.periodicals.portlets import last_edition
+from sc.periodicals.portlets import latest_periodical
 from sc.periodicals.testing import INTEGRATION_TESTING
 from collective.nitf.controlpanel import INITFSettings
 from DateTime import DateTime
@@ -27,17 +27,17 @@ class PortletTest(unittest.TestCase):
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
 
     def test_portlet_type_registered(self):
-        name = 'sc.periodicals.LastEditionPortlet'
+        name = 'sc.periodicals.LatestPeriodicalPortlet'
         last = getUtility(IPortletType, name=name)
         self.assertEqual(last.addview, name)
 
     def test_interfaces(self):
-        last = last_edition.Assignment()
+        last = latest_periodical.Assignment()
         self.assertTrue(IPortletAssignment.providedBy(last))
         self.assertTrue(IPortletDataProvider.providedBy(last.data))
 
     def test_invoke_add_view(self):
-        name = 'sc.periodicals.LastEditionPortlet'
+        name = 'sc.periodicals.LatestPeriodicalPortlet'
         last = getUtility(IPortletType, name=name)
         path = '++contextportlets++plone.leftcolumn'
         mapping = self.portal.restrictedTraverse(path)
@@ -49,16 +49,16 @@ class PortletTest(unittest.TestCase):
         addview.createAndAdd(data={})
 
         self.assertEqual(len(mapping), 1)
-        self.assertTrue(isinstance(mapping.values()[0], last_edition.Assignment))
+        self.assertTrue(isinstance(mapping.values()[0], latest_periodical.Assignment))
 
     def test_invoke_edit_view(self):
         mapping = PortletAssignmentMapping()
         request = self.request
 
-        mapping['last_edition'] = last_edition.Assignment()
+        mapping['latest_periodical'] = latest_periodical.Assignment()
 
-        editview = getMultiAdapter((mapping['last_edition'], request), name='edit')
-        self.assertTrue(isinstance(editview, last_edition.EditForm))
+        editview = getMultiAdapter((mapping['latest_periodical'], request), name='edit')
+        self.assertTrue(isinstance(editview, latest_periodical.EditForm))
 
     def test_obtain_renderer(self):
         context = self.portal
@@ -68,12 +68,12 @@ class PortletTest(unittest.TestCase):
             IPortletManager, name='plone.rightcolumn',
             context=self.portal)
 
-        assgmnt1 = last_edition.Assignment()
+        assgmnt1 = latest_periodical.Assignment()
 
         renderer1 = getMultiAdapter(
             (context, request, view, manager, assgmnt1), IPortletRenderer)
 
-        self.assertTrue(isinstance(renderer1, last_edition.Renderer))
+        self.assertTrue(isinstance(renderer1, latest_periodical.Renderer))
 
 
 class RenderTest(unittest.TestCase):
@@ -135,26 +135,23 @@ class RenderTest(unittest.TestCase):
 
     def test_render(self):
 
-        assgmnt1 = last_edition.Assignment()
+        assgmnt1 = latest_periodical.Assignment()
 
         r1 = self.renderer(context=self.portal, assignment=assgmnt1)
-        r1 = r1.__of__(self.portal)
         r1.update()
 
     def test_portlet_header(self):
 
-        assgmnt1 = last_edition.Assignment()
+        assgmnt1 = latest_periodical.Assignment()
 
         r1 = self.renderer(context=self.portal, assignment=assgmnt1)
-        r1 = r1.__of__(self.portal)
-        self.assertEqual(r1.getHeader(), u'')
+        self.assertEqual(r1.title, u"")
 
     def test_portlet_available(self):
 
-        assgmnt1 = last_edition.Assignment()
+        assgmnt1 = latest_periodical.Assignment()
 
         r1 = self.renderer(context=self.portal, assignment=assgmnt1)
-        r1 = r1.__of__(self.portal)
 
         self.wf.doActionFor(self.p1, 'retract')
         self.assertFalse(r1.available)
@@ -163,52 +160,47 @@ class RenderTest(unittest.TestCase):
         self.assertTrue(r1.available)
 
     def test_articles_in_periodical(self):
-        assgmnt1 = last_edition.Assignment()
-
-        r1 = self.renderer(context=self.portal, assignment=assgmnt1)
-        r1 = r1.__of__(self.portal)
+        assgmnt1 = latest_periodical.Assignment(count=2)
 
         self.wf.doActionFor(self.p1, 'retract')
-        self.assertFalse(r1.get_last_edition())
-        self.assertFalse(r1.get_articles())
+        r1 = self.renderer(context=self.portal, assignment=assgmnt1)
+        self.assertIsNone(r1.get_latest_periodical())
+        self.assertIsNone(r1.published_news_articles())
 
         self.wf.doActionFor(self.p1, 'publish')
-        self.assertTrue(r1.get_last_edition())
-        self.assertEqual(len(r1.get_articles()), 2)
+        r1 = self.renderer(context=self.portal, assignment=assgmnt1)
+        self.assertIsNotNone(r1.get_latest_periodical())
+        self.assertEqual(len(r1.published_news_articles()), 2)
 
         query = self.default_query
         catalog_results = self.catalog(**query)
         self.assertEqual(
-            [i.id for i in r1.get_articles()],
+            [i.id for i in r1.published_news_articles()],
             [i.id for i in catalog_results]
         )
 
     def test_text_in_portlet(self):
 
-        assgmnt1 = last_edition.Assignment(text=u'Praesent augue lorem, sagittis ut.')
+        assgmnt1 = latest_periodical.Assignment(text=u'Praesent augue lorem, sagittis ut.')
 
         r1 = self.renderer(context=self.portal, assignment=assgmnt1)
-        r1 = r1.__of__(self.portal)
         self.assertTrue(r1.get_text() == u'Praesent augue lorem, sagittis ut.')
 
-    def test_thumbnail_size(self):
+    def test_thumbnail_scale(self):
 
-        assgmnt1 = last_edition.Assignment(size='tile')
-
-        r1 = self.renderer(context=self.portal, assignment=assgmnt1)
-        r1 = r1.__of__(self.portal)
-        self.assertTrue(r1.get_size() == 'tile')
-
-    def test_quantity(self):
-
-        assgmnt1 = last_edition.Assignment(quantity=3)
+        assgmnt1 = latest_periodical.Assignment(image_scale='tile')
 
         r1 = self.renderer(context=self.portal, assignment=assgmnt1)
-        r1 = r1.__of__(self.portal)
-        self.assertTrue(r1.data.quantity == 3)
+        self.assertTrue(r1.get_image_scale() == 'tile')
 
-        assgmnt1 = last_edition.Assignment()
+    def test_count(self):
+
+        assgmnt1 = latest_periodical.Assignment()
 
         r1 = self.renderer(context=self.portal, assignment=assgmnt1)
-        r1 = r1.__of__(self.portal)
-        self.assertTrue(r1.data.quantity == 2)
+        self.assertEqual(r1.data.count, 5)
+
+        assgmnt1 = latest_periodical.Assignment(count=3)
+
+        r1 = self.renderer(context=self.portal, assignment=assgmnt1)
+        self.assertEqual(r1.data.count, 3)

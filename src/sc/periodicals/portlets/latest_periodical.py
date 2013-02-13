@@ -1,40 +1,46 @@
 # -*- coding: utf-8 -*-
 
-from sc.periodicals import _
-from sc.periodicals.content import IPeriodical
-from sc.periodicals.vocab import thumbnail_sizes_vocabulary
+from Acquisition import aq_inner
 from collective.nitf.content import INITF
+from plone.app.portlets.cache import render_cachekey
 from plone.app.portlets.portlets import base
+from plone.memoize import ram
+from plone.memoize.compress import xhtml_compress
+from plone.memoize.instance import memoize
 from plone.portlets.interfaces import IPortletDataProvider
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from sc.periodicals import _
+from sc.periodicals.content import IPeriodical
+from sc.periodicals.vocab import thumbnail_sizes_vocabulary
 from zope import schema
 from zope.formlib import form
 from zope.interface import implements
-from Acquisition import aq_inner
 
 
-class ILastEditionPortlet(IPortletDataProvider):
-    """
-    A portlet which shows the last edition of a periodical.
+class ILatestPeriodicalPortlet(IPortletDataProvider):
+    """This portlet shows the latest published Periodical.
     """
 
     header = schema.TextLine(
-        title=_(u'Header'),
-        description=_(u"The header for the portlet. Leave empty for none."),
+        title=_(u'Portlet header'),
+        description=_('help_header',
+            default=u"The header for the portlet. Leave empty for none."),
         required=False)
 
-    size = schema.Choice(
-        title=u"Image size",
+    image_scale = schema.Choice(
+        title=u"Image scale",
+        description=_('help_image_scale',
+            default=u"The scale of the image associated with the periodical."),
         required=True,
         default='thumb',
         source=thumbnail_sizes_vocabulary)
 
-    quantity = schema.Int(
-        title=_(u'Articles quantity'),
-        description=_(u'Quantity of articles in portlet'),
-        required=False,
-        default=2)
+    count = schema.Int(
+        title=_(u"Number of items to display"),
+        description=_(u'How many items to list.'),
+        default=5,
+        required=False)
 
     text = schema.Text(
         title=_(u'Text'),
@@ -48,15 +54,13 @@ class Assignment(base.Assignment):
     with columns.
     """
 
-    implements(ILastEditionPortlet)
+    implements(ILatestPeriodicalPortlet)
 
-    header = u""
-
-    def __init__(self, header=u"", size=None, quantity=2, text=u""):
+    def __init__(self, header=u"", image_scale=None, count=5, text=u""):
 
         self.header = header
-        self.size = size
-        self.quantity = quantity
+        self.image_scale = image_scale
+        self.count = count
         self.text = text
 
     @property
@@ -64,25 +68,30 @@ class Assignment(base.Assignment):
         """This property is used to give the title of the portlet in the
         "manage portlets" screen. Here, we use the title that the user gave.
         """
-        return _(u"Last Edition")
+        return _(u"Latest Periodical")
 
 
 class Renderer(base.Renderer):
 
-    render = ViewPageTemplateFile('last_edition.pt')
+    _template = ViewPageTemplateFile('latest_periodical.pt')
+
+    def __init__(self, *args):
+        base.Renderer.__init__(self, *args)
+
+    @ram.cache(render_cachekey)
+    def render(self):
+        return xhtml_compress(self._template())
 
     @property
     def available(self):
-        """Show the portlet only if there are one or more elements."""
-        return self.get_last_edition()
+        """Show the portlet only if there is at least one item."""
+        return self.get_latest_periodical() is not None
 
-    def getHeader(self):
-        """
-        @return: returns the header for the portlet
-        """
+    @property
+    def title(self):
         return self.data.header
 
-    def get_last_edition(self):
+    def get_latest_periodical(self):
         """
         @return: returns the catalog results (brains) if exists
         """
@@ -93,45 +102,43 @@ class Renderer(base.Renderer):
             sort_order='descending',
             review_state='published',
         )
-        if results:
-            return results[0]
-        else:
-            return None
 
-    def get_articles(self):
+        return results[0] if results else None
+
+    def published_news_articles(self):
+        return self._data()
+
+    @memoize
+    def _data(self):
         """
         @return:returns the articles in a periodical
         """
-        catalog = getToolByName(self, 'portal_catalog')
+        periodical = self.get_latest_periodical()
+        if periodical is None:
+            return
 
-        quantity = self.data.quantity
-        if not quantity:
-            quantity = 2
-        last_edition = self.get_last_edition()
-        if last_edition:
-            periodical = last_edition.getObject()
+        periodical = periodical.getObject()
 
-        else:
-            return None
+        context = aq_inner(self.context)
+        catalog = getToolByName(context, 'portal_catalog')
+        path = '/'.join(periodical.getPhysicalPath())
+        count = self.data.count
 
-        if periodical:
-            articles = catalog(
-                object_provides=INITF.__identifier__,
-                path='/'.join(periodical.getPhysicalPath()),
-                sort_on='getObjPositionInParent',
-                sort_limit=quantity,
-                review_state='published',
-            )
-            if articles:
-                return articles
-            else:
-                return None
-        else:
-            return None
+        articles = catalog(
+            object_provides=INITF.__identifier__,
+            path=path,
+            review_state='published',
+            sort_on='getObjPositionInParent',
+            sort_limit=count,
+        )
 
-    def get_size(self):
-        return self.data.size
+        return articles[:count] if articles else None
 
+    def get_image_scale(self):
+        return self.data.image_scale
+
+    # XXX: this method seems to be complete needless as text field is
+    #      schema.Text and not RichText; we have to review this later
     def get_text(self, mt='text/x-html-safe'):
         """Use the safe_html transform to protect text output. This also
         ensures that resolve UID links are transformed into real links.
@@ -162,12 +169,16 @@ class Renderer(base.Renderer):
             return result
         return None
 
+    def get_periodical_title(self):
+        periodical = self.get_latest_periodical()
+        return periodical.Title if periodical is not None else None
+
 
 class AddForm(base.AddForm):
 
-    form_fields = form.Fields(ILastEditionPortlet)
+    form_fields = form.Fields(ILatestPeriodicalPortlet)
 
-    label = _(u"Add last edition Portlet")
+    label = _(u"Add Latest Periodical Portlet")
     description = _(u"This portlet display the last edition of a periodical.")
 
     def create(self, data):
@@ -176,7 +187,7 @@ class AddForm(base.AddForm):
 
 class EditForm(base.EditForm):
 
-    form_fields = form.Fields(ILastEditionPortlet)
+    form_fields = form.Fields(ILatestPeriodicalPortlet)
 
-    label = _(u"Edit last edition Portlet")
+    label = _(u"Edit Latest Periodical Portlet")
     description = _(u"This portlet display the last edition of a periodical.")
