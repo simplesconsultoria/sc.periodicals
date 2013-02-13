@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-01-23 17:08+0000\n"
+"POT-Creation-Date: 2013-02-13 01:26+0000\n"
 "PO-Revision-Date: 2013-01-23 15:08-0300\n"
 "Last-Translator: Gustavo Lepri <lepri@simplesconsultoria.com.br>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,72 +19,94 @@ msgstr ""
 msgid "A periodical"
 msgstr "Um períodico"
 
-#: sc/periodicals/profiles/default/portlets.xml
-msgid "A portlet which shows the last edition of a periodical."
-msgstr "Um portlet que exibe a última edição de um periódico."
-
-#: sc/periodicals/portlets/last_edition.py:114
-msgid "Add last edition Portlet"
-msgstr "Adicionar portlet da última edição"
+#: sc/periodicals/portlets/latest_periodical.py:185
+msgid "Add Latest Periodical Portlet"
+msgstr ""
 
 #: sc/periodicals/templates/view.pt:40
-msgid "Articles"
-msgstr "Artigos"
+msgid "Contents"
+msgstr ""
 
-#: sc/periodicals/content.py:30
-msgid "Circulation date"
-msgstr "Data de circulação"
+#: sc/periodicals/portlets/latest_periodical.py:196
+msgid "Edit Latest Periodical Portlet"
+msgstr ""
 
-#: sc/periodicals/content.py:24
-msgid "Cover image"
-msgstr "Imagem de capa"
+#: sc/periodicals/content.py:25
+msgid "Image"
+msgstr ""
 
-#: sc/periodicals/portlets/last_edition.py:125
-msgid "Edit last edition Portlet"
-msgstr "Editar portlet da última edição"
+#: sc/periodicals/portlets/latest_periodical.py:75
+#: sc/periodicals/profiles/default/portlets.xml
+msgid "Latest Periodical"
+msgstr ""
+
+#: sc/periodicals/content.py:17
+msgid "Number"
+msgstr ""
 
 #: sc/periodicals/templates/view.pt:13
-msgid "Edition ${edition_number}"
-msgstr "Edição ${edition_number}"
+msgid "Number ${DYNAMIC_CONTENT}"
+msgstr ""
 
-#: sc/periodicals/content.py:18
-msgid "Edition number"
-msgstr "Número da edição"
-
-#: sc/periodicals/portlets/last_edition.py:21
-msgid "Header"
-msgstr "Cabeçalho"
-
-#: sc/periodicals/portlets/last_edition.py:46
-#: sc/periodicals/profiles/default/portlets.xml
-msgid "Last Edition"
-msgstr "Última Edição"
+#: sc/periodicals/portlets/latest_periodical.py:42
+msgid "Number of items to display"
+msgstr ""
 
 #: sc/periodicals/profiles/default/types/Periodical.xml
 msgid "Periodical"
 msgstr "Periódico"
 
-#: sc/periodicals/portlets/last_edition.py:22
-msgid "The header for the portlet. Leave empty for none."
-msgstr "O cabeçalho para o portlet. Deixe vazio para nenhum."
+#: sc/periodicals/portlets/latest_periodical.py:26
+msgid "Portlet header"
+msgstr ""
 
-#: sc/periodicals/portlets/last_edition.py:115
+#: sc/periodicals/content.py:34
+msgid "Publication Date"
+msgstr ""
+
+#: sc/periodicals/portlets/latest_periodical.py:50
+msgid "Text"
+msgstr ""
+
+#: sc/periodicals/portlets/latest_periodical.py:186
 msgid "This portlet display the last edition of a periodical."
 msgstr "Este portlet exibe a última edição de um periódico."
 
-#: sc/periodicals/content.py:30
-msgid "help_circulation_date"
-msgstr " "
+#: sc/periodicals/profiles/default/portlets.xml
+msgid "This portlet shows the latest published Periodical."
+msgstr ""
 
-#. Default: "A cover image for periodical."
-#: sc/periodicals/content.py:25
-msgid "help_cover_image"
+#. Default: "How many items to list."
+#: sc/periodicals/portlets/latest_periodical.py:43
+msgid "help_count"
+msgstr ""
+
+#. Default: "The header for the portlet. Leave empty for none."
+#: sc/periodicals/portlets/latest_periodical.py:27
+msgid "help_header"
+msgstr ""
+
+#. Default: "An image associated with the periodical. For printed periodicals you should use the cover."
+#: sc/periodicals/content.py:26
+#, fuzzy
+msgid "help_image"
 msgstr "A imagem de capa do periódico."
 
-#. Default: "A number for this edition."
-#: sc/periodicals/content.py:19
-msgid "help_edition_number"
+#. Default: "The scale of the image associated with the periodical."
+#: sc/periodicals/portlets/latest_periodical.py:34
+msgid "help_image_scale"
+msgstr ""
+
+#. Default: "The number of the periodical."
+#: sc/periodicals/content.py:18
+#, fuzzy
+msgid "help_number"
 msgstr "O número da edição."
+
+#. Default: "The publication date of the periodical (do not confuse with the effective date)."
+#: sc/periodicals/content.py:35
+msgid "help_publication_date"
+msgstr " "
 
 #. Default: "Read More…"
 #: sc/periodicals/templates/view.pt:85

@@ -1,7 +1,10 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-01-23 17:08+0000\n"
+"Project-Id-Version: sc.periodicals 1.0\n"
+"POT-Creation-Date: 2013-02-13 01:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12,77 +15,97 @@ msgstr ""
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: DOMAIN\n"
+"Domain: sc.periodicals\n"
 
 #: sc/periodicals/profiles/default/types/Periodical.xml
 msgid "A periodical"
 msgstr ""
 
-#: sc/periodicals/profiles/default/portlets.xml
-msgid "A portlet which shows the last edition of a periodical."
-msgstr ""
-
-#: sc/periodicals/portlets/last_edition.py:114
-msgid "Add last edition Portlet"
+#: sc/periodicals/portlets/latest_periodical.py:185
+msgid "Add Latest Periodical Portlet"
 msgstr ""
 
 #: sc/periodicals/templates/view.pt:40
-msgid "Articles"
+msgid "Contents"
 msgstr ""
 
-#: sc/periodicals/content.py:30
-msgid "Circulation date"
+#: sc/periodicals/portlets/latest_periodical.py:196
+msgid "Edit Latest Periodical Portlet"
 msgstr ""
 
-#: sc/periodicals/content.py:24
-msgid "Cover image"
+#: sc/periodicals/content.py:25
+msgid "Image"
 msgstr ""
 
-#: sc/periodicals/portlets/last_edition.py:125
-msgid "Edit last edition Portlet"
+#: sc/periodicals/portlets/latest_periodical.py:75
+#: sc/periodicals/profiles/default/portlets.xml
+msgid "Latest Periodical"
+msgstr ""
+
+#: sc/periodicals/content.py:17
+msgid "Number"
 msgstr ""
 
 #: sc/periodicals/templates/view.pt:13
-msgid "Edition ${edition_number}"
+msgid "Number ${DYNAMIC_CONTENT}"
 msgstr ""
 
-#: sc/periodicals/content.py:18
-msgid "Edition number"
-msgstr ""
-
-#: sc/periodicals/portlets/last_edition.py:21
-msgid "Header"
-msgstr ""
-
-#: sc/periodicals/portlets/last_edition.py:46
-#: sc/periodicals/profiles/default/portlets.xml
-msgid "Last Edition"
+#: sc/periodicals/portlets/latest_periodical.py:42
+msgid "Number of items to display"
 msgstr ""
 
 #: sc/periodicals/profiles/default/types/Periodical.xml
 msgid "Periodical"
 msgstr ""
 
-#: sc/periodicals/portlets/last_edition.py:22
-msgid "The header for the portlet. Leave empty for none."
+#: sc/periodicals/portlets/latest_periodical.py:26
+msgid "Portlet header"
 msgstr ""
 
-#: sc/periodicals/portlets/last_edition.py:115
+#: sc/periodicals/content.py:34
+msgid "Publication Date"
+msgstr ""
+
+#: sc/periodicals/portlets/latest_periodical.py:50
+msgid "Text"
+msgstr ""
+
+#: sc/periodicals/portlets/latest_periodical.py:186
 msgid "This portlet display the last edition of a periodical."
 msgstr ""
 
-#: sc/periodicals/content.py:30
-msgid "help_circulation_date"
+#: sc/periodicals/profiles/default/portlets.xml
+msgid "This portlet shows the latest published Periodical."
 msgstr ""
 
-#. Default: "A cover image for periodical."
-#: sc/periodicals/content.py:25
-msgid "help_cover_image"
+#. Default: "How many items to list."
+#: sc/periodicals/portlets/latest_periodical.py:43
+msgid "help_count"
 msgstr ""
 
-#. Default: "A number for this edition."
-#: sc/periodicals/content.py:19
-msgid "help_edition_number"
+#. Default: "The header for the portlet. Leave empty for none."
+#: sc/periodicals/portlets/latest_periodical.py:27
+msgid "help_header"
+msgstr ""
+
+#. Default: "An image associated with the periodical. For printed periodicals you should use the cover."
+#: sc/periodicals/content.py:26
+msgid "help_image"
+msgstr ""
+
+#. Default: "The scale of the image associated with the periodical."
+#: sc/periodicals/portlets/latest_periodical.py:34
+msgid "help_image_scale"
+msgstr ""
+
+#. Default: "The number of the periodical."
+#: sc/periodicals/content.py:18
+msgid "help_number"
+msgstr ""
+
+#. Default: "The publication date of the periodical (do not confuse with the effective date)."
+#: sc/periodicals/content.py:35
+msgid "help_publication_date"
 msgstr ""
 
 #. Default: "Read More…"
