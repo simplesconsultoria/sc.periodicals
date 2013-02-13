@@ -24,13 +24,15 @@ class ILatestPeriodicalPortlet(IPortletDataProvider):
 
     header = schema.TextLine(
         title=_(u'Portlet header'),
-        description=_('help_header',
+        description=_(
+            'help_header',
             default=u"The header for the portlet. Leave empty for none."),
         required=False)
 
     image_scale = schema.Choice(
         title=u"Image scale",
-        description=_('help_image_scale',
+        description=_(
+            'help_image_scale',
             default=u"The scale of the image associated with the periodical."),
         required=True,
         default='thumb',
@@ -38,7 +40,9 @@ class ILatestPeriodicalPortlet(IPortletDataProvider):
 
     count = schema.Int(
         title=_(u"Number of items to display"),
-        description=_(u'How many items to list.'),
+        description=_(
+            'help_count',
+            default=u'How many items to list.'),
         default=5,
         required=False)
 

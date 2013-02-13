@@ -4,8 +4,6 @@ from plone.app.customerize import registration
 from plone.app.testing import TEST_USER_ID, setRoles
 from sc.periodicals.interfaces import IPeriodicalLayer
 from sc.periodicals.testing import INTEGRATION_TESTING
-from sc.periodicals.testing import zptlogo
-from StringIO import StringIO
 from zope.component import getMultiAdapter
 from zope.interface import directlyProvides
 
