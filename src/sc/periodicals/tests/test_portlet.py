@@ -165,7 +165,7 @@ class RenderTest(unittest.TestCase):
         self.wf.doActionFor(self.p1, 'retract')
         r1 = self.renderer(context=self.portal, assignment=assgmnt1)
         self.assertFalse(r1.get_latest_periodical())
-        self.assertIsNone(r1.published_news_articles())
+        self.assertFalse(r1.published_news_articles())
 
         self.wf.doActionFor(self.p1, 'publish')
         r1 = self.renderer(context=self.portal, assignment=assgmnt1)

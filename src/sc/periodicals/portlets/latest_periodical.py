@@ -119,13 +119,11 @@ class Renderer(base.Renderer):
         """
         periodical = self.get_latest_periodical()
         if periodical is None:
-            return
-
-        periodical = periodical.getObject()
+            return []
 
         context = aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')
-        path = '/'.join(periodical.getPhysicalPath())
+        path = periodical.getPath()
         count = self.data.count
 
         articles = catalog(
