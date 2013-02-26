@@ -136,7 +136,7 @@ class Renderer(base.Renderer):
             sort_limit=count,
         )
 
-        return articles[:count] if articles else None
+        return articles[:count] if articles else []
 
     def get_image_scale(self):
         return self.data.image_scale
