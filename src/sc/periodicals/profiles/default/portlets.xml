@@ -3,7 +3,7 @@
    i18n:domain="sc.periodicals">
  <portlet title="Latest Periodical"
     addview="sc.periodicals.LatestPeriodicalPortlet"
-    description="This portlet shows the latest published Periodical."
+    description="This portlet shows the latest published periodical."
     i18n:attributes="title; description">
   <for interface="plone.app.portlets.interfaces.IColumn" />
   <for interface="plone.app.portlets.interfaces.IDashboard" />

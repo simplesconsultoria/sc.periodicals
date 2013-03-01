@@ -19,7 +19,7 @@ from zope.interface import implements
 
 
 class ILatestPeriodicalPortlet(IPortletDataProvider):
-    """This portlet shows the latest published Periodical.
+    """This portlet shows the latest published periodical.
     """
 
     header = schema.TextLine(
@@ -181,7 +181,7 @@ class AddForm(base.AddForm):
     form_fields = form.Fields(ILatestPeriodicalPortlet)
 
     label = _(u"Add Latest Periodical Portlet")
-    description = _(u"This portlet display the last edition of a periodical.")
+    description = _(u"This portlet shows the latest published periodical.")
 
     def create(self, data):
         return Assignment(**data)
@@ -192,4 +192,4 @@ class EditForm(base.EditForm):
     form_fields = form.Fields(ILatestPeriodicalPortlet)
 
     label = _(u"Edit Latest Periodical Portlet")
-    description = _(u"This portlet display the last edition of a periodical.")
+    description = _(u"This portlet shows the latest published periodical.")

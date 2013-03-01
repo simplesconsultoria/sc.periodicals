@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: sc.periodicals 1.0\n"
-"POT-Creation-Date: 2013-02-13 01:26+0000\n"
+"POT-Creation-Date: 2013-03-01 14:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "A periodical"
 msgstr ""
 
-#: sc/periodicals/portlets/latest_periodical.py:185
+#: sc/periodicals/portlets/latest_periodical.py:183
 msgid "Add Latest Periodical Portlet"
 msgstr ""
 
@@ -29,7 +29,7 @@ msgstr ""
 msgid "Contents"
 msgstr ""
 
-#: sc/periodicals/portlets/latest_periodical.py:196
+#: sc/periodicals/portlets/latest_periodical.py:194
 msgid "Edit Latest Periodical Portlet"
 msgstr ""
 
@@ -70,12 +70,9 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: sc/periodicals/portlets/latest_periodical.py:186
-msgid "This portlet display the last edition of a periodical."
-msgstr ""
-
+#: sc/periodicals/portlets/latest_periodical.py:184
 #: sc/periodicals/profiles/default/portlets.xml
-msgid "This portlet shows the latest published Periodical."
+msgid "This portlet shows the latest published periodical."
 msgstr ""
 
 #. Default: "How many items to list."
