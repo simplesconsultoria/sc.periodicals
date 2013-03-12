@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: sc.periodicals 1.0\n"
-"POT-Creation-Date: 2013-03-01 14:51+0000\n"
-"PO-Revision-Date: 2013-03-01 11:53-0300\n"
+"POT-Creation-Date: 2013-03-12 18:48+0000\n"
+"PO-Revision-Date: 2013-03-12 15:39-0300\n"
 "Last-Translator: Héctor Velarde <hector.velarde@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr "Um períodico"
 msgid "Add Latest Periodical Portlet"
 msgstr "Adicionar portlet de periódico mais recente"
 
-#: sc/periodicals/templates/view.pt:40
+#: sc/periodicals/templates/view.pt:43
 msgid "Contents"
 msgstr "Conteúdos"
 
@@ -41,12 +41,9 @@ msgid "Latest Periodical"
 msgstr "Periódico mais recente"
 
 #: sc/periodicals/content.py:17
+#: sc/periodicals/templates/view.pt:14
 msgid "Number"
 msgstr "Edição"
-
-#: sc/periodicals/templates/view.pt:13
-msgid "Number ${DYNAMIC_CONTENT}"
-msgstr "Edição ${DYNAMIC_CONTENT}"
 
 #: sc/periodicals/portlets/latest_periodical.py:42
 msgid "Number of items to display"
@@ -105,7 +102,7 @@ msgid "help_publication_date"
 msgstr " A data de publicação do periódico (não é a data de efetivação)."
 
 #. Default: "Read More…"
-#: sc/periodicals/templates/view.pt:85
+#: sc/periodicals/templates/view.pt:88
 msgid "read_more"
 msgstr "Leia mais..."
 

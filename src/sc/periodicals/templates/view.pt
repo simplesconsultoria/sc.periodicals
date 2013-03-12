@@ -10,7 +10,10 @@
 <div tal:replace="structure provider:plone.abovecontenttitle" />
 <metal:title fill-slot="content-title">
     <tal:content-title metal:define-macro="content-title">
-        <p i18n:translate="">Number <span tal:replace="context/number" /></p>
+        <p>
+            <span i18n:translate="">Number</span>
+            <span tal:replace="context/number" />
+        </p>
         <h1 class="documentFirstHeading" tal:content="context/title" />
     </tal:content-title>
 </metal:title>
