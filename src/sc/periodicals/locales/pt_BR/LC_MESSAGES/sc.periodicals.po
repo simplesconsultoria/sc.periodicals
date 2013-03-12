@@ -42,11 +42,11 @@ msgstr "Periódico mais recente"
 
 #: sc/periodicals/content.py:17
 msgid "Number"
-msgstr "Número"
+msgstr "Edição"
 
 #: sc/periodicals/templates/view.pt:13
 msgid "Number ${DYNAMIC_CONTENT}"
-msgstr "Número ${DYNAMIC_CONTENT}"
+msgstr "Edição ${DYNAMIC_CONTENT}"
 
 #: sc/periodicals/portlets/latest_periodical.py:42
 msgid "Number of items to display"
@@ -58,7 +58,7 @@ msgstr "Periódico"
 
 #: sc/periodicals/portlets/latest_periodical.py:26
 msgid "Portlet header"
-msgstr "Cabeçalho do portlet"
+msgstr "Título do portlet"
 
 #: sc/periodicals/content.py:34
 msgid "Publication Date"
@@ -102,7 +102,7 @@ msgstr "O número da edição."
 #. Default: "The publication date of the periodical (do not confuse with the effective date)."
 #: sc/periodicals/content.py:35
 msgid "help_publication_date"
-msgstr " A data de publicação do periódico (não é a data efetiva)."
+msgstr " A data de publicação do periódico (não é a data de efetivação)."
 
 #. Default: "Read More…"
 #: sc/periodicals/templates/view.pt:85
