@@ -7,5 +7,6 @@ the following people:
 - Gustavo Lepri
 - André Nogueira
 - Héctor Velarde
+- Érico Andrei
 
 Development sponsored by Simples Consultoria.
