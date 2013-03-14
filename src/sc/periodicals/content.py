@@ -45,12 +45,16 @@ class Periodical(Container):
 
     def image_thumb(self):
         ''' Return a thumbnail '''
+        if not self.image:
+            return None
         view = self.unrestrictedTraverse('@@images')
         return view.scale(fieldname='image',
                           scale='thumb').index_html()
 
     def tag(self, scale='thumb', css_class='tileImage', **kw):
         ''' Return a tag to the image '''
+        if not self.image:
+            return ''
         view = self.unrestrictedTraverse('@@images')
         return view.tag(fieldname='image',
                         scale=scale,

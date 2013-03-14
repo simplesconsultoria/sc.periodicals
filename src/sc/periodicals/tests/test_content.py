@@ -86,6 +86,14 @@ class ContentTypeTestCase(unittest.TestCase):
         p1 = self.p1
         self.assertTrue(p1.restrictedTraverse('image_thumb')().read())
 
+    def test_image_thumb_no_image(self):
+        ''' Test if traversing to image_thumb returns None if we have
+            no image there
+        '''
+        p1 = self.p1
+        p1.image = None
+        self.assertEquals(p1.restrictedTraverse('image_thumb')(), None)
+
     def test_image_tag(self):
         ''' Test if tag method works as expected
         '''
@@ -95,3 +103,11 @@ class ContentTypeTestCase(unittest.TestCase):
 
         expected = u'title="" height="128" width="99" class="tileImage" />'
         self.assertTrue(p1.tag().endswith(expected))
+
+    def test_image_tag_no_image(self):
+        ''' Test if tag method works as expected
+        '''
+        p1 = self.p1
+        p1.image = None
+        expected = u''
+        self.assertEquals(p1.tag(), expected)
