@@ -8,6 +8,11 @@ from sc.periodicals import _
 from zope import schema
 
 
+def has_image(periodical):
+    image = periodical.image
+    return (image and image.getSize())
+
+
 class IPeriodical(form.Schema):
     """A folderish content types to include articles in it.
     """
@@ -45,7 +50,7 @@ class Periodical(Container):
 
     def image_thumb(self):
         ''' Return a thumbnail '''
-        if not self.image:
+        if not has_image(self):
             return None
         view = self.unrestrictedTraverse('@@images')
         return view.scale(fieldname='image',
@@ -53,7 +58,7 @@ class Periodical(Container):
 
     def tag(self, scale='thumb', css_class='tileImage', **kw):
         ''' Return a tag to the image '''
-        if not self.image:
+        if not has_image(self):
             return ''
         view = self.unrestrictedTraverse('@@images')
         return view.tag(fieldname='image',

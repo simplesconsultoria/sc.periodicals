@@ -94,6 +94,10 @@ class ContentTypeTestCase(unittest.TestCase):
         p1.image = None
         self.assertEquals(p1.restrictedTraverse('image_thumb')(), None)
 
+        # set an empty image file
+        p1.image = NamedBlobImage('', 'image/jpeg', u'picture.jpg')
+        self.assertEquals(p1.restrictedTraverse('image_thumb')(), None)
+
     def test_image_tag(self):
         ''' Test if tag method works as expected
         '''
@@ -110,4 +114,8 @@ class ContentTypeTestCase(unittest.TestCase):
         p1 = self.p1
         p1.image = None
         expected = u''
+        self.assertEquals(p1.tag(), expected)
+
+        # set an empty image file
+        p1.image = NamedBlobImage('', 'image/jpeg', u'picture.jpg')
         self.assertEquals(p1.tag(), expected)
