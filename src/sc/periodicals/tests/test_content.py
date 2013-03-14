@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
-import os
-from sc.periodicals.content import IPeriodical
-from sc.periodicals.testing import INTEGRATION_TESTING
-from plone.namedfile.file import NamedBlobImage
 from plone.app.referenceablebehavior.referenceable import IReferenceable
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from plone.dexterity.interfaces import IDexterityFTI
+from plone.namedfile.file import NamedBlobImage
 from plone.uuid.interfaces import IAttributeUUID
 from Products.CMFPlone.interfaces import INonStructuralFolder
+from sc.periodicals.content import IPeriodical
+from sc.periodicals.testing import INTEGRATION_TESTING
 from zope.component import createObject
 from zope.component import queryUtility
 
+import os
 import unittest2 as unittest
 
 
