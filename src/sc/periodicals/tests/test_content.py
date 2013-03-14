@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
-
+import os
 from sc.periodicals.content import IPeriodical
 from sc.periodicals.testing import INTEGRATION_TESTING
+from plone.namedfile.file import NamedBlobImage
 from plone.app.referenceablebehavior.referenceable import IReferenceable
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
@@ -25,9 +26,16 @@ class ContentTypeTestCase(unittest.TestCase):
         self.portal.invokeFactory('Folder', 'test-folder')
         setRoles(self.portal, TEST_USER_ID, ['Member'])
         self.folder = self.portal['test-folder']
+        self.setup_content(self.folder)
 
-        self.folder.invokeFactory('Periodical', 'p1')
-        self.p1 = self.folder['p1']
+    def setup_content(self, folder):
+        path = os.path.dirname(__file__)
+        data = open(os.path.join(path, 'cover.png')).read()
+        image = NamedBlobImage(data, 'image/png', u'cover.png')
+        folder.invokeFactory('Periodical', 'p1')
+        p1 = self.folder['p1']
+        p1.image = image
+        self.p1 = p1
 
     def test_adding(self):
         self.assertTrue(IPeriodical.providedBy(self.p1))
@@ -71,3 +79,19 @@ class ContentTypeTestCase(unittest.TestCase):
         fti = queryUtility(IDexterityFTI, name='Periodical')
         allowed_types = fti.allowed_content_types
         self.assertTrue('collective.nitf.content' in allowed_types)
+
+    def test_image_thumb(self):
+        ''' Test if traversing to image_thumb returns an image
+        '''
+        p1 = self.p1
+        self.assertTrue(p1.restrictedTraverse('image_thumb')().read())
+
+    def test_image_tag(self):
+        ''' Test if tag method works as expected
+        '''
+        p1 = self.p1
+        expected = u'<img src="http://nohost/plone/test-folder/p1/@@images/'
+        self.assertTrue(p1.tag().startswith(expected))
+
+        expected = u'title="" height="128" width="99" class="tileImage" />'
+        self.assertTrue(p1.tag().endswith(expected))
