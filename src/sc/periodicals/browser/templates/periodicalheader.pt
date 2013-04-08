@@ -1,0 +1,18 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      i18n:domain="sc.periodicals">
+<body>
+
+<tal:viewlet condition="viewlet/available">
+  <div>
+    <a href="" tal:attributes="href viewlet/periodical_url"></a>
+    <span tal:content="viewlet/number" />
+    <span tal:content="viewlet/publication_date" />
+  </div>
+</tal:viewlet>
+
+</body>
+</html>
