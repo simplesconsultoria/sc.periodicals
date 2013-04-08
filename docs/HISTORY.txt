@@ -4,15 +4,11 @@ Changelog
 1.0a2 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
+- Do not allow discussion by default in Periodical content type. [hvelarde]
+
 - Added image_thumb and tag methods to the content type 
   allowing it to be listed on folder_summary_view
   [ericof]
-
-
-1.0a1 (2013-03-13)
-^^^^^^^^^^^^^^^^^^
-
-- Nothing changed yet.
 
 
 1.0a1 (2013-03-13)
