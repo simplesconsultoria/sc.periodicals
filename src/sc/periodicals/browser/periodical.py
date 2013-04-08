@@ -68,4 +68,5 @@ class PeriodicalHeader(grok.Viewlet):
 
     def publication_date(self):
         periodical = self.periodical()
-        return periodical.publication_date
+        # TODO: this has to be moved to the viewlet template
+        return periodical.publication_date.strftime("%B %d, %Y")

@@ -7,10 +7,12 @@
 <body>
 
 <tal:viewlet condition="viewlet/available">
-  <div>
+  <div class="periodical-header">
     <a href="" tal:attributes="href viewlet/periodical_url"></a>
-    <span tal:content="viewlet/number" />
-    <span tal:content="viewlet/publication_date" />
+    Nº <span tal:content="viewlet/number" />,
+    <span  tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                       publication_date viewlet/publication_date"
+        tal:content="publication_date" />
   </div>
 </tal:viewlet>
 
