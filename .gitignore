@@ -2,9 +2,9 @@
 *.mo
 *.pyc
 *~
+.idea
 .installed.cfg
 .mr.developer.cfg
-.idea
 bin/
 coverage/
 develop-eggs/
@@ -12,6 +12,7 @@ downloads/
 eggs/
 include/
 lib/
+Makefile
 parts/
 src/collective.nitf/
 var/
