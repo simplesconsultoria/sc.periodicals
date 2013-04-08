@@ -46,7 +46,7 @@ setup(name='sc.periodicals',
         'collective.nitf',
         'plone.namedfile[blobs]',
         'plone.formwidget.namedfile',
-        'plone.app.dexterity[grok]',
+        'plone.app.dexterity[grok,relations]',
         'plone.behavior',
         ],
     extras_require={
