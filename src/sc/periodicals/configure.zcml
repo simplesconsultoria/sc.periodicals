@@ -11,14 +11,14 @@
 
   <include package=".portlets" />
 
-  <grok:grok package="." />
-
-  <include file="profiles.zcml" />
-  <include file="behavior.zcml" />
-
   <permission
       id="sc.periodicals.AddPeriodical"
       title="sc.periodicals: Add Periodical"
       />
   
+  <grok:grok package="." />
+
+  <include file="profiles.zcml" />
+  <include file="behavior.zcml" />
+
 </configure>
