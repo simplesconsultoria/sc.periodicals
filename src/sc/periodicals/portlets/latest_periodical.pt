@@ -33,11 +33,11 @@
     </div>
 
     <div tal:repeat="obj view/published_news_articles">
+        <p tal:content="obj/subtitle"></p>
         <a href=""
            tal:attributes="href obj/getURL">
             <h4 tal:content="obj/Title"></h4>
         </a>
-        <p tal:content="obj/subtitle"></p>
     </div>
     </tal:block>
 
