@@ -65,3 +65,17 @@ class Periodical(Container):
                         scale=scale,
                         css_class=css_class,
                         **kw)
+
+    # XXX: we have to figure out an unified way of doing this
+    #      above we needed those for summary_view in collections
+    #      below we need this for the same on sumary_view in folders?
+    #      taken from collective.nitf
+
+    def getImage(self):
+        """Return the first Image inside the News Article.
+        """
+        content_filter = {'portal_type': 'Image'}
+        images = self.listFolderContents(content_filter)
+        return images[0] if len(images) > 0 else None
+
+    image = getImage  # XXX: a hack to support summary_view
