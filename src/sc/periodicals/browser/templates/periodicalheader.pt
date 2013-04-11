@@ -12,7 +12,7 @@
     Nº <span tal:content="viewlet/number" />,
     <span  tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
                        publication_date viewlet/publication_date"
-        tal:content="publication_date" />
+        tal:content="python:toLocalizedTime(publication_date)" />
   </div>
 </tal:viewlet>
 
