@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: sc.periodicals 1.0\n"
-"POT-Creation-Date: 2013-03-12 18:48+0000\n"
+"POT-Creation-Date: 2013-04-14 20:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,16 +25,20 @@ msgstr ""
 msgid "Add Latest Periodical Portlet"
 msgstr ""
 
-#: sc/periodicals/templates/view.pt:43
-msgid "Contents"
-msgstr ""
-
 #: sc/periodicals/portlets/latest_periodical.py:194
 msgid "Edit Latest Periodical Portlet"
 msgstr ""
 
-#: sc/periodicals/content.py:25
+#: sc/periodicals/content.py:30
 msgid "Image"
+msgstr ""
+
+#: sc/periodicals/browser/templates/view.pt:43
+msgid "In this issue"
+msgstr ""
+
+#: sc/periodicals/browser/templates/periodicalheader.pt:12
+msgid "Issue"
 msgstr ""
 
 #: sc/periodicals/portlets/latest_periodical.py:75
@@ -42,8 +46,8 @@ msgstr ""
 msgid "Latest Periodical"
 msgstr ""
 
-#: sc/periodicals/content.py:17
-#: sc/periodicals/templates/view.pt:14
+#: sc/periodicals/browser/templates/view.pt:14
+#: sc/periodicals/content.py:22
 msgid "Number"
 msgstr ""
 
@@ -59,7 +63,7 @@ msgstr ""
 msgid "Portlet header"
 msgstr ""
 
-#: sc/periodicals/content.py:34
+#: sc/periodicals/content.py:39
 msgid "Publication Date"
 msgstr ""
 
@@ -83,7 +87,7 @@ msgid "help_header"
 msgstr ""
 
 #. Default: "An image associated with the periodical. For printed periodicals you should use the cover."
-#: sc/periodicals/content.py:26
+#: sc/periodicals/content.py:31
 msgid "help_image"
 msgstr ""
 
@@ -93,17 +97,17 @@ msgid "help_image_scale"
 msgstr ""
 
 #. Default: "The number of the periodical."
-#: sc/periodicals/content.py:18
+#: sc/periodicals/content.py:23
 msgid "help_number"
 msgstr ""
 
 #. Default: "The publication date of the periodical (do not confuse with the effective date)."
-#: sc/periodicals/content.py:35
+#: sc/periodicals/content.py:40
 msgid "help_publication_date"
 msgstr ""
 
 #. Default: "Read More…"
-#: sc/periodicals/templates/view.pt:88
+#: sc/periodicals/browser/templates/view.pt:88
 msgid "read_more"
 msgstr ""
 

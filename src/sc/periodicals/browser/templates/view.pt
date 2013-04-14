@@ -40,7 +40,7 @@
                          toLocalizedTime nocall: context/@@plone/toLocalizedTime;">
         <tal:listing condition="results">
             <br />
-            <h2 i18n:translate="">Contents</h2>
+            <h2 i18n:translate="">In this issue</h2>
             <dl>
                 <tal:entry tal:repeat="item results">
                     <tal:block tal:define="item_url item/getURL;

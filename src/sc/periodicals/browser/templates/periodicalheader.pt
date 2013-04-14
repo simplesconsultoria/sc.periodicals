@@ -9,10 +9,10 @@
 <tal:viewlet condition="viewlet/available">
   <div class="periodical-header">
     <a href="" tal:attributes="href viewlet/periodical_url"></a>
-    Nº <span tal:content="viewlet/number" />,
-    <span  tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
-                       publication_date viewlet/publication_date"
-        tal:content="python:toLocalizedTime(publication_date)" />
+    <span i18n:translate="">Issue</span> <span tal:content="viewlet/number" />,
+    <span tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                      publication_date viewlet/publication_date"
+          tal:content="python:toLocalizedTime(publication_date)" />
   </div>
 </tal:viewlet>
 
