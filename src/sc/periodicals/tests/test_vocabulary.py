@@ -24,4 +24,4 @@ class VocabulariesTest(unittest.TestCase):
         vocabulary = thumbnail_sizes_vocabulary(self.portal)
         clients = ['mini', 'thumb', 'large', 'listing', 'tile', 'preview', 'icon']
         for term in vocabulary.by_token.keys():
-            self.failIf(term not in clients)
+            self.assertIn(term, clients)

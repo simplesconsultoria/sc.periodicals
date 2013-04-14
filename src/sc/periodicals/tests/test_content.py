@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 from plone.app.referenceablebehavior.referenceable import IReferenceable
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
@@ -67,40 +68,33 @@ class ContentTypeTestCase(unittest.TestCase):
         except ImportError:
             self.fail('ILocking behavior not available')
 
-    def test_is_not_non_structural_folder(self):
-        """
-        Periodical CT doesn't implement INonStructuralFolder any longer
-        to allow folder factories menu
-        """
-        self.assertFalse(INonStructuralFolder.providedBy(self.p1))
-
     def test_allowable_types(self):
         # test if collective.nitf.content is allowed in Periodical CT
         fti = queryUtility(IDexterityFTI, name='Periodical')
         allowed_types = fti.allowed_content_types
-        self.assertTrue('collective.nitf.content' in allowed_types)
+        self.assertIn('collective.nitf.content', allowed_types)
 
     def test_image_thumb(self):
-        ''' Test if traversing to image_thumb returns an image
-        '''
+        """Test if traversing to image_thumb returns an image.
+        """
         p1 = self.p1
         self.assertTrue(p1.restrictedTraverse('image_thumb')().read())
 
     def test_image_thumb_no_image(self):
-        ''' Test if traversing to image_thumb returns None if we have
-            no image there
-        '''
+        """Test if traversing to image_thumb returns None if we have no image
+        there.
+        """
         p1 = self.p1
         p1.image = None
-        self.assertEquals(p1.restrictedTraverse('image_thumb')(), None)
+        self.assertEqual(p1.restrictedTraverse('image_thumb')(), None)
 
         # set an empty image file
         p1.image = NamedBlobImage('', 'image/jpeg', u'picture.jpg')
-        self.assertEquals(p1.restrictedTraverse('image_thumb')(), None)
+        self.assertEqual(p1.restrictedTraverse('image_thumb')(), None)
 
     def test_image_tag(self):
-        ''' Test if tag method works as expected
-        '''
+        """Test if tag method works as expected.
+        """
         p1 = self.p1
         expected = u'<img src="http://nohost/plone/test-folder/p1/@@images/'
         self.assertTrue(p1.tag().startswith(expected))
@@ -109,13 +103,13 @@ class ContentTypeTestCase(unittest.TestCase):
         self.assertTrue(p1.tag().endswith(expected))
 
     def test_image_tag_no_image(self):
-        ''' Test if tag method works as expected
-        '''
+        """Test if tag method works as expected.
+        """
         p1 = self.p1
         p1.image = None
         expected = u''
-        self.assertEquals(p1.tag(), expected)
+        self.assertEqual(p1.tag(), expected)
 
         # set an empty image file
         p1.image = NamedBlobImage('', 'image/jpeg', u'picture.jpg')
-        self.assertEquals(p1.tag(), expected)
+        self.assertEqual(p1.tag(), expected)
