@@ -4,6 +4,8 @@ Changelog
 1.0a2 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
+- Fix package dependencies. [hvelarde]
+
 - Remove dependency on unittest2; this means tests could fail on Python 2.6;
   you have been warned. [hvelarde]
 
