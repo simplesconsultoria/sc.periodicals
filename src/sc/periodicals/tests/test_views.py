@@ -7,7 +7,7 @@ from sc.periodicals.testing import INTEGRATION_TESTING
 from zope.component import getMultiAdapter
 from zope.interface import directlyProvides
 
-import unittest2 as unittest
+import unittest
 
 
 class DefaultViewTestCase(unittest.TestCase):

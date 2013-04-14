@@ -3,7 +3,7 @@
 from sc.periodicals.testing import FUNCTIONAL_TESTING
 from sc.periodicals.vocab import thumbnail_sizes_vocabulary
 
-import unittest2 as unittest
+import unittest
 
 
 class VocabulariesTest(unittest.TestCase):

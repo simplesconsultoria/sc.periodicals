@@ -4,6 +4,9 @@ Changelog
 1.0a2 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
+- Remove dependency on unittest2; this means tests could fail on Python 2.6;
+  you have been warned. [hvelarde]
+
 - Update Brazilian Portuguese and Spanish translations. [hvelarde]
 
 - Remove unassociated template periodicals_list. [hvelarde]
