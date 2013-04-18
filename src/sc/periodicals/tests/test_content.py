@@ -19,6 +19,7 @@ import unittest
 class ContentTypeTestCase(unittest.TestCase):
 
     layer = INTEGRATION_TESTING
+    sample_text = u'Breaking News!!'
 
     def setUp(self):
         self.portal = self.layer['portal']
@@ -36,6 +37,7 @@ class ContentTypeTestCase(unittest.TestCase):
         folder.invokeFactory('Periodical', 'p1')
         p1 = self.folder['p1']
         p1.image = image
+        p1.text = self.sample_text
         self.p1 = p1
 
     def test_adding(self):
@@ -113,3 +115,9 @@ class ContentTypeTestCase(unittest.TestCase):
         # set an empty image file
         p1.image = NamedBlobImage('', 'image/jpeg', u'picture.jpg')
         self.assertEqual(p1.tag(), expected)
+
+    def test_text_field(self):
+        """ Test if text field is populated
+        """
+
+        self.assertEqual(self.p1, self.sample_text)
