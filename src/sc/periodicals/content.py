@@ -19,7 +19,7 @@ class IPeriodical(form.Schema):
     """
 
     form.order_before(number='IDublinCore.title')
-    number = schema.Int(
+    number = schema.Text(
         title=_(u'Number'),
         description=_(
             u'help_number',

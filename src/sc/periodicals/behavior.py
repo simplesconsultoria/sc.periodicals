@@ -20,4 +20,4 @@ class NameFromEdition(object):
 
     @property
     def title(self):
-        return str(self.context.number)
+        return unicode(self.context.number)
