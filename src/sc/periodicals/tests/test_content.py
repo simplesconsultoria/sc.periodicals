@@ -120,4 +120,4 @@ class ContentTypeTestCase(unittest.TestCase):
         """ Test if text field is populated
         """
 
-        self.assertEqual(self.p1, self.sample_text)
+        self.assertEqual(self.p1.text, self.sample_text)
