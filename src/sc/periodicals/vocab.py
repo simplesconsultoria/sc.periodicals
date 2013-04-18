@@ -16,6 +16,7 @@ def thumbnail_sizes_vocabulary(context):
     rtype: SimpleVocabulary
     """
     terms = []
-    for name, size in getAllowedSizes().iteritems():
+    for name, size in sorted((item for item in getAllowedSizes().iteritems()),
+                              key=lambda item: item[1][0]):
         terms.append(SimpleVocabulary.createTerm(name, str(name), u"%s" % name))
     return SimpleVocabulary(terms)
