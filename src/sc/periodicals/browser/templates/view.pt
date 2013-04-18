@@ -33,8 +33,7 @@
                  tal:replace="structure python: scale.scale('image', scale='preview').tag()" />
         </div>
         <div class="newsText"
-              tal:condition="python: getattr(context,'text', False)"
-        >
+              tal:condition="python: getattr(context,'text', False)">
             <div tal:replace="structure context/text/output" />
         </div>
         <div class="visualClear"><!-- --></div>

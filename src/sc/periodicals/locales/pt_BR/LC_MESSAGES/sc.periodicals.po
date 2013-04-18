@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: sc.periodicals 1.0\n"
-"POT-Creation-Date: 2013-04-14 20:59+0000\n"
+"POT-Creation-Date: 2013-04-18 18:38+0000\n"
 "PO-Revision-Date: 2013-04-14 18:01-0300\n"
 "Last-Translator: Héctor Velarde <hector.velarde@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,21 +17,25 @@ msgstr ""
 
 #: sc/periodicals/profiles/default/types/Periodical.xml
 msgid "A periodical"
-msgstr "Um períodico"
+msgstr "Um periódico"
 
 #: sc/periodicals/portlets/latest_periodical.py:183
 msgid "Add Latest Periodical Portlet"
 msgstr "Adicionar portlet de periódico mais recente"
 
+#: sc/periodicals/content.py:49
+msgid "Cover Text"
+msgstr "Texto da capa"
+
 #: sc/periodicals/portlets/latest_periodical.py:194
 msgid "Edit Latest Periodical Portlet"
 msgstr "Editar portlet de periódico mais recente"
 
-#: sc/periodicals/content.py:30
+#: sc/periodicals/content.py:31
 msgid "Image"
 msgstr "Imagem"
 
-#: sc/periodicals/browser/templates/view.pt:43
+#: sc/periodicals/browser/templates/view.pt:47
 msgid "In this issue"
 msgstr "Nesta edição"
 
@@ -45,7 +49,7 @@ msgid "Latest Periodical"
 msgstr "Periódico mais recente"
 
 #: sc/periodicals/browser/templates/view.pt:14
-#: sc/periodicals/content.py:22
+#: sc/periodicals/content.py:23
 msgid "Number"
 msgstr "Edição"
 
@@ -61,7 +65,7 @@ msgstr "Periódico"
 msgid "Portlet header"
 msgstr "Título do portlet"
 
-#: sc/periodicals/content.py:39
+#: sc/periodicals/content.py:40
 msgid "Publication Date"
 msgstr "Data de publicação"
 
@@ -82,10 +86,10 @@ msgstr "Número de itens a mostrar."
 #. Default: "The header for the portlet. Leave empty for none."
 #: sc/periodicals/portlets/latest_periodical.py:27
 msgid "help_header"
-msgstr "O cabeçalho do portlet. Vazio para nenhum."
+msgstr "O cabeçalho do portlet. Deixe vazio para nenhum."
 
 #. Default: "An image associated with the periodical. For printed periodicals you should use the cover."
-#: sc/periodicals/content.py:31
+#: sc/periodicals/content.py:32
 msgid "help_image"
 msgstr "A imagem de capa do periódico. Use a capa do periódico para impressos."
 
@@ -95,18 +99,23 @@ msgid "help_image_scale"
 msgstr "A escala da imagem associada com o periódico."
 
 #. Default: "The number of the periodical."
-#: sc/periodicals/content.py:23
+#: sc/periodicals/content.py:24
 #, fuzzy
 msgid "help_number"
 msgstr "O número da edição."
 
 #. Default: "The publication date of the periodical (do not confuse with the effective date)."
-#: sc/periodicals/content.py:40
+#: sc/periodicals/content.py:41
 msgid "help_publication_date"
-msgstr " A data de publicação do periódico (não é a data de efetivação)."
+msgstr "A data de publicação do periódico (não é a data de efetivação)."
+
+#. Default: "Cover or index text to show up alongside the periodical"
+#: sc/periodicals/content.py:50
+msgid "help_text"
+msgstr "Texto da capa ou índice de notícias exibido junto com o periódico"
 
 #. Default: "Read More…"
-#: sc/periodicals/browser/templates/view.pt:88
+#: sc/periodicals/browser/templates/view.pt:92
 msgid "read_more"
 msgstr "Leia mais..."
 
