@@ -6,7 +6,6 @@ from plone.app.testing import TEST_USER_ID
 from plone.dexterity.interfaces import IDexterityFTI
 from plone.namedfile.file import NamedBlobImage
 from plone.uuid.interfaces import IAttributeUUID
-from Products.CMFPlone.interfaces import INonStructuralFolder
 from sc.periodicals.content import IPeriodical
 from sc.periodicals.testing import INTEGRATION_TESTING
 from zope.component import createObject
