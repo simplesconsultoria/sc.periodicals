@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from five import grok
+from plone.app.textfield import RichText
 from plone.dexterity.content import Container
 from plone.directives import form
 from plone.namedfile.field import NamedBlobImage
@@ -41,6 +42,11 @@ class IPeriodical(form.Schema):
             u'help_publication_date',
             default=u"The publication date of the periodical "
                     u"(do not confuse with the effective date)."),
+        required=False,
+    )
+
+    text = RichText(
+        title=_(u'Body text'),
         required=False,
     )
 
