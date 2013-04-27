@@ -22,7 +22,8 @@ logger = logging.getLogger(PROJECTNAME)
 LC_TIME = os.getenv('LC_TIME')
 locale.setlocale(locale.LC_TIME, LC_TIME)
 logger.info(
-    "Locale category for the formatting of time was set to %s" % LC_TIME)
+    u"Locale category for the formatting of time was set to %s according "
+    u"to the value of the 'LC_TIME' environment variable" % LC_TIME)
 
 grok.templatedir('templates')
 
