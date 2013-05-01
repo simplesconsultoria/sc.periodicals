@@ -6,24 +6,9 @@ from five import grok
 from plone.app.layout.viewlets.interfaces import IAboveContent
 from plone.directives import dexterity
 from Products.CMFPlone.utils import getToolByName
-from sc.periodicals.config import PROJECTNAME
 from sc.periodicals.content import IPeriodical
 from sc.periodicals.interfaces import IPeriodicalLayer
 from zope.interface import Interface
-
-import locale
-import logging
-import os
-
-# HACK: we need to return localized formated dates and I didn't found any way
-#       to do it in Plone or Zope; I don't know if this is the right way but
-#       seems to be working
-logger = logging.getLogger(PROJECTNAME)
-LC_TIME = os.getenv('LC_TIME')
-locale.setlocale(locale.LC_TIME, LC_TIME)
-logger.info(
-    u"Locale category for the formatting of time was set to %s according "
-    u"to the value of the 'LC_TIME' environment variable" % LC_TIME)
 
 grok.templatedir('templates')
 
@@ -82,11 +67,10 @@ class PeriodicalHeader(grok.Viewlet):
         return periodical.number
 
     def publication_date(self, format=None):
-        """Return the periodical publication date in the specified localized
-        format (see HACK at the beginning of module for more information).
+        """Return the periodical publication date.
         """
         periodical = self.periodical()
-        # XXX: publication_date should be required
-        #      see: https://github.com/simplesconsultoria/sc.periodicals/issues/5
+        # XXX: publication_date format should be configurable
+        #      see: https://github.com/simplesconsultoria/sc.periodicals/issues/6
         if periodical.publication_date:
             return periodical.publication_date.strftime(format)
