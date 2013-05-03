@@ -5,10 +5,17 @@ from collective.nitf.content import INITF
 from five import grok
 from plone.app.layout.viewlets.interfaces import IAboveContent
 from plone.directives import dexterity
+from Products.CMFPlone.i18nl10n import monthname_msgid
+from Products.CMFPlone.i18nl10n import monthname_msgid_abbr
+from Products.CMFPlone.i18nl10n import weekdayname_msgid
+from Products.CMFPlone.i18nl10n import weekdayname_msgid_abbr
 from Products.CMFPlone.utils import getToolByName
 from sc.periodicals.content import IPeriodical
 from sc.periodicals.interfaces import IPeriodicalLayer
+from zope.i18n import translate
 from zope.interface import Interface
+
+import re
 
 grok.templatedir('templates')
 
@@ -66,11 +73,31 @@ class PeriodicalHeader(grok.Viewlet):
         periodical = self.periodical()
         return periodical.number
 
+    def _translate(self, msgid):
+        return translate(msgid, 'plonelocales', context=self.request)
+
     def publication_date(self, format=None):
-        """Return the periodical publication date.
+        """Return the periodical publication date localized and in the format
+        specified. For more information on format codes see:
+        http://docs.python.org/2/library/datetime.html#strftime-strptime-behavior
         """
         periodical = self.periodical()
-        # XXX: publication_date format should be configurable
-        #      see: https://github.com/simplesconsultoria/sc.periodicals/issues/6
         if periodical.publication_date:
-            return periodical.publication_date.strftime(format)
+            day = periodical.publication_date.day
+            month = periodical.publication_date.month
+
+            # let's map and translate the directives we care about
+            # an example of what we get for Friday, April 26, 2013:
+            # {'%a': 'Fri', '%A': 'Friday', '%b': 'Apr', '%A': 'April'}
+            codes = {
+                '%a': self._translate(weekdayname_msgid_abbr(day)),
+                '%A': self._translate(weekdayname_msgid(day)),
+                '%b': self._translate(monthname_msgid_abbr(month)),
+                '%B': self._translate(monthname_msgid(month)),
+            }
+
+            # replace occurrences of directives with our translated strings
+            prog = re.compile('|'.join(codes.keys()))
+            result = prog.sub(lambda m: codes[m.group(0)], format)
+            # process the remaining format codes normally
+            return periodical.publication_date.strftime(result)
