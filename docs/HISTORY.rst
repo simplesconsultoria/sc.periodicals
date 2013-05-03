@@ -1,7 +1,7 @@
 Changelog
 ---------
 
-1.0a2 (unreleased)
+1.0a2 (2013-05-03)
 ^^^^^^^^^^^^^^^^^^
 
 - Use effective date instead of creation date for getting the latest

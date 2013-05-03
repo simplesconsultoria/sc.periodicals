@@ -5,7 +5,7 @@ from setuptools import setup
 
 import os
 
-version = '1.0a2.dev0'
+version = '1.0a2'
 description = "A content type to register periodicals of a printed publication."
 long_description = (
     open("README.rst").read() + "\n" +
