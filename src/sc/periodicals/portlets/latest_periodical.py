@@ -102,8 +102,8 @@ class Renderer(base.Renderer):
         catalog = getToolByName(self, 'portal_catalog')
         results = catalog(
             object_provides=IPeriodical.__identifier__,
-            sort_on='created',
-            sort_order='descending',
+            sort_on='effective',
+            sort_order='reverse',
             review_state='published',
         )
 
