@@ -4,6 +4,12 @@ Changelog
 1.0a2 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
+- Use effective date instead of creation date for getting the latest
+  periodical; still not optimal, but it probably will work better. [hvelarde]
+
+- Publication date format was localized and is now configurable via the
+  viewlet template (closes `#6`_). [hvelarde]
+
 - A new rich text field was added to the Periodical content type. [hvelarde]
 
 - Use 'preview' scale instead of 'mini' for image size in view template.
