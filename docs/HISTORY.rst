@@ -1,7 +1,7 @@
 Changelog
 ---------
 
-1.0a3 (unreleased)
+1.0a3 (2013-05-03)
 ^^^^^^^^^^^^^^^^^^
 
 - Fix translation of weekdays on header viewlet; we were getting 'day' instead
