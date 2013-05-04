@@ -4,7 +4,8 @@ Changelog
 1.0a3 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
-- Nothing changed yet.
+- Fix translation of weekdays on header viewlet; we were getting 'day' instead
+  of 'weakday' from publication date. [hvelarde]
 
 
 1.0a2 (2013-05-03)

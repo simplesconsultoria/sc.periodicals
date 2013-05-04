@@ -83,7 +83,7 @@ class PeriodicalHeader(grok.Viewlet):
         """
         periodical = self.periodical()
         if periodical.publication_date:
-            day = periodical.publication_date.day
+            day = periodical.publication_date.weekday()
             month = periodical.publication_date.month
 
             # let's map and translate the directives we care about
