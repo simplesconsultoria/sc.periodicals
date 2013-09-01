@@ -4,7 +4,7 @@ Changelog
 1.0a4 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
-- Nothing changed yet.
+- Registry resource folder. [cleberjsantos]
 
 
 1.0a3 (2013-05-03)
