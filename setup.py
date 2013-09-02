@@ -16,7 +16,7 @@ setup(name='sc.periodicals',
       description=description,
       long_description=long_description,
       classifiers=[
-          "Development Status :: 1 - Alpha",
+          "Development Status :: 4 - Beta",
           "Environment :: Web Environment",
           "Framework :: Plone",
           "Framework :: Plone :: 4.2",
