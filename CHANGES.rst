@@ -1,7 +1,7 @@
 Changelog
 ---------
 
-1.0a4 (unreleased)
+1.0b1 (2013-09-02)
 ^^^^^^^^^^^^^^^^^^
 
 - Registry resource folder. [cleberjsantos]
