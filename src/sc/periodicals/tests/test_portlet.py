@@ -98,11 +98,11 @@ class RenderTest(unittest.TestCase):
         self.p1 = self.portal['p1']
 
         self.set_default_workflow()
-        self.wf.doActionFor(self.p1, "publish")
+        self.wf.doActionFor(self.p1, 'publish')
         # Let's create 3 sections in the registry
         registry = getUtility(IRegistry)
         settings = registry.forInterface(INITFSettings)
-        settings.available_sections = set([u"Section 1", ])
+        settings.available_sections = set([u'Section 1', ])
 
         # Let's create 3 nitf's
         for index in range(1, 4):
@@ -110,14 +110,14 @@ class RenderTest(unittest.TestCase):
                 'collective.nitf.content',
                 'section1-nitf-%s' % index)
             n = self.p1['section1-nitf-%s' % index]
-            n.title = "Section 1 Nitf %s" % index
-            n.section = "Section 1"
-            n.genre = "Genre %s" % index
-            n.created = DateTime("%(year)s/1/%(index)s %(index)s:00:00" %
+            n.title = 'Section 1 Nitf %s' % index
+            n.section = 'Section 1'
+            n.genre = 'Genre %s' % index
+            n.created = DateTime('%(year)s/1/%(index)s %(index)s:00:00' %
                                  {'year': DateTime().year(),
                                   'index': index})
             n.reindexObject()
-            self.wf.doActionFor(n, "publish")
+            self.wf.doActionFor(n, 'publish')
 
         self.default_query = {'Type': ('News Article',),
                               'sort_on': 'getObjPositionInParent',
@@ -147,7 +147,7 @@ class RenderTest(unittest.TestCase):
         assgmnt1 = latest_periodical.Assignment()
 
         r1 = self.renderer(context=self.portal, assignment=assgmnt1)
-        self.assertEqual(r1.title, u"")
+        self.assertEqual(r1.title, u'')
 
     def test_portlet_available(self):
 

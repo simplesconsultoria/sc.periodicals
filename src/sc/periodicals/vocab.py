@@ -17,5 +17,5 @@ def thumbnail_sizes_vocabulary(context):
     """
     terms = []
     for name, size in getAllowedSizes().iteritems():
-        terms.append(SimpleVocabulary.createTerm(name, str(name), u"%s" % name))
+        terms.append(SimpleVocabulary.createTerm(name, str(name), u'%s' % name))
     return SimpleVocabulary(terms)

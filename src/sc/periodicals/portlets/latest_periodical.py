@@ -26,20 +26,20 @@ class ILatestPeriodicalPortlet(IPortletDataProvider):
         title=_(u'Portlet header'),
         description=_(
             'help_header',
-            default=u"The header for the portlet. Leave empty for none."),
+            default=u'The header for the portlet. Leave empty for none.'),
         required=False)
 
     image_scale = schema.Choice(
-        title=u"Image scale",
+        title=u'Image scale',
         description=_(
             'help_image_scale',
-            default=u"The scale of the image associated with the periodical."),
+            default=u'The scale of the image associated with the periodical.'),
         required=True,
         default='thumb',
         source=thumbnail_sizes_vocabulary)
 
     count = schema.Int(
-        title=_(u"Number of items to display"),
+        title=_(u'Number of items to display'),
         description=_(
             'help_count',
             default=u'How many items to list.'),
@@ -60,7 +60,7 @@ class Assignment(base.Assignment):
 
     implements(ILatestPeriodicalPortlet)
 
-    def __init__(self, header=u"", image_scale=None, count=5, text=u""):
+    def __init__(self, header=u'', image_scale=None, count=5, text=u''):
 
         self.header = header
         self.image_scale = image_scale
@@ -72,7 +72,7 @@ class Assignment(base.Assignment):
         """This property is used to give the title of the portlet in the
         "manage portlets" screen. Here, we use the title that the user gave.
         """
-        return _(u"Latest Periodical")
+        return _(u'Latest Periodical')
 
 
 class Renderer(base.Renderer):
@@ -149,7 +149,7 @@ class Renderer(base.Renderer):
         """
         orig = self.data.text
         if not orig:
-            orig = u""
+            orig = u''
         context = aq_inner(self.context)
         if not isinstance(orig, unicode):
             # Apply a potentially lossy transformation, and hope we stored
@@ -180,8 +180,8 @@ class AddForm(base.AddForm):
 
     form_fields = form.Fields(ILatestPeriodicalPortlet)
 
-    label = _(u"Add Latest Periodical Portlet")
-    description = _(u"This portlet shows the latest published periodical.")
+    label = _(u'Add Latest Periodical Portlet')
+    description = _(u'This portlet shows the latest published periodical.')
 
     def create(self, data):
         return Assignment(**data)
@@ -191,5 +191,5 @@ class EditForm(base.EditForm):
 
     form_fields = form.Fields(ILatestPeriodicalPortlet)
 
-    label = _(u"Edit Latest Periodical Portlet")
-    description = _(u"This portlet shows the latest published periodical.")
+    label = _(u'Edit Latest Periodical Portlet')
+    description = _(u'This portlet shows the latest published periodical.')

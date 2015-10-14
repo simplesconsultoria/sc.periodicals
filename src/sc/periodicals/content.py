@@ -23,7 +23,7 @@ class IPeriodical(form.Schema):
         title=_(u'Number'),
         description=_(
             u'help_number',
-            default=u"The number of the periodical."),
+            default=u'The number of the periodical.'),
         required=True,
     )
 
@@ -31,8 +31,8 @@ class IPeriodical(form.Schema):
         title=_(u'Image'),
         description=_(
             u'help_image',
-            default=u"An image associated with the periodical. "
-                    u"For printed periodicals you should use the cover."),
+            default=u'An image associated with the periodical. '
+                    u'For printed periodicals you should use the cover.'),
         required=False,
     )
 
@@ -40,8 +40,8 @@ class IPeriodical(form.Schema):
         title=_(u'Publication Date'),
         description=_(
             u'help_publication_date',
-            default=u"The publication date of the periodical "
-                    u"(do not confuse with the effective date)."),
+            default=u'The publication date of the periodical '
+                    u'(do not confuse with the effective date).'),
         required=False,
     )
 
