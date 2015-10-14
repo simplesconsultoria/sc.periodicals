@@ -13,5 +13,5 @@
       addview=".latest_periodical.AddForm"
       editview=".latest_periodical.EditForm"
       />
-        
+
 </configure>
