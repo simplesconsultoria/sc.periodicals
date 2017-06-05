@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
-
-from plone.app.referenceablebehavior.referenceable import IReferenceable
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from plone.dexterity.interfaces import IDexterityFTI
 from plone.namedfile.file import NamedBlobImage
-from plone.uuid.interfaces import IAttributeUUID
 from sc.periodicals.content import IPeriodical
 from sc.periodicals.testing import INTEGRATION_TESTING
 from zope.component import createObject
@@ -54,10 +51,6 @@ class ContentTypeTestCase(unittest.TestCase):
         factory = fti.factory
         new_object = createObject(factory)
         self.assertTrue(IPeriodical.providedBy(new_object))
-
-    def test_is_referenceable(self):
-        self.assertTrue(IReferenceable.providedBy(self.p1))
-        self.assertTrue(IAttributeUUID.providedBy(self.p1))
 
     def test_locking_behavior_available(self):
         # ILocking is not applied by default, but must be available if needed
