@@ -55,7 +55,7 @@ class Periodical(Container):
     grok.implements(IPeriodical)
 
     def image_thumb(self):
-        ''' Return a thumbnail '''
+        """Return a thumbnail."""
         if not has_image(self):
             return None
         view = self.unrestrictedTraverse('@@images')
@@ -63,7 +63,7 @@ class Periodical(Container):
                           scale='thumb').index_html()
 
     def tag(self, scale='thumb', css_class='tileImage', **kw):
-        ''' Return a tag to the image '''
+        """Return a tag to the image."""
         if not has_image(self):
             return ''
         view = self.unrestrictedTraverse('@@images')
