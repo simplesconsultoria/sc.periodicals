@@ -10,6 +10,9 @@ Changelog
 1.0b1 (2013-09-02)
 ^^^^^^^^^^^^^^^^^^
 
+- Drop support for Python 2.6 and Plone 4.2.
+  [hvelarde]
+
 - Registry resource folder. [cleberjsantos]
 
 
