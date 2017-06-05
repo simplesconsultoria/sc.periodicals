@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-
-from sc.periodicals.config import PROJECTNAME
 from Products.CMFCore.utils import getToolByName
+from sc.periodicals.config import PROJECTNAME
 
 
 def uninstall(portal, reinstall=False):

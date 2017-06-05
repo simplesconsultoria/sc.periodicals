@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 from Acquisition import aq_inner
 from collective.nitf.content import INITF
 from five import grok
@@ -16,6 +15,7 @@ from zope.i18n import translate
 from zope.interface import Interface
 
 import re
+
 
 grok.templatedir('templates')
 

@@ -1,7 +1,4 @@
 # -*- coding: utf-8 -*-
-
-from sc.periodicals.portlets import latest_periodical
-from sc.periodicals.testing import INTEGRATION_TESTING
 from collective.nitf.controlpanel import INITFSettings
 from DateTime import DateTime
 from plone.app.portlets.storage import PortletAssignmentMapping
@@ -13,6 +10,8 @@ from plone.portlets.interfaces import IPortletManager
 from plone.portlets.interfaces import IPortletRenderer
 from plone.portlets.interfaces import IPortletType
 from plone.registry.interfaces import IRegistry
+from sc.periodicals.portlets import latest_periodical
+from sc.periodicals.testing import INTEGRATION_TESTING
 from zope.component import getMultiAdapter
 from zope.component import getUtility
 

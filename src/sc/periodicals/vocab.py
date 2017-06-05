@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
-
 from five import grok
 from plone.app.imaging.utils import getAllowedSizes
-
 from zope.schema.interfaces import IContextSourceBinder
 from zope.schema.vocabulary import SimpleVocabulary
 
