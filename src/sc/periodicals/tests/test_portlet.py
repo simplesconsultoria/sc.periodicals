@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from collective.nitf.controlpanel import INITFSettings
 from DateTime import DateTime
 from plone.app.portlets.storage import PortletAssignmentMapping
 from plone.app.testing import setRoles
@@ -9,7 +8,6 @@ from plone.portlets.interfaces import IPortletDataProvider
 from plone.portlets.interfaces import IPortletManager
 from plone.portlets.interfaces import IPortletRenderer
 from plone.portlets.interfaces import IPortletType
-from plone.registry.interfaces import IRegistry
 from sc.periodicals.portlets import latest_periodical
 from sc.periodicals.testing import INTEGRATION_TESTING
 from zope.component import getMultiAdapter
@@ -98,10 +96,6 @@ class RenderTest(unittest.TestCase):
 
         self.set_default_workflow()
         self.wf.doActionFor(self.p1, 'publish')
-        # Let's create 3 sections in the registry
-        registry = getUtility(IRegistry)
-        settings = registry.forInterface(INITFSettings)
-        settings.available_sections = set([u'Section 1', ])
 
         # Let's create 3 nitf's
         for index in range(1, 4):

@@ -5,7 +5,6 @@ from plone.app.testing import TEST_USER_ID
 from sc.periodicals.interfaces import IPeriodicalLayer
 from sc.periodicals.testing import INTEGRATION_TESTING
 from zope.component import getMultiAdapter
-from zope.interface import directlyProvides
 
 import unittest
 
@@ -17,7 +16,6 @@ class DefaultViewTestCase(unittest.TestCase):
     def setUp(self):
         self.portal = self.layer['portal']
         self.request = self.layer['request']
-        directlyProvides(self.request, IPeriodicalLayer)
 
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
         self.portal.invokeFactory('Periodical', 'periodical')

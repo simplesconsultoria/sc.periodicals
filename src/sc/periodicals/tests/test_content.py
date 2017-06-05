@@ -74,10 +74,9 @@ class ContentTypeTestCase(unittest.TestCase):
         self.assertIn('collective.nitf.content', allowed_types)
 
     def test_image_thumb(self):
-        """Test if traversing to image_thumb returns an image.
-        """
-        p1 = self.p1
-        self.assertTrue(p1.restrictedTraverse('image_thumb')().read())
+        """Test if traversing to image_thumb returns an image."""
+        image_thumb = self.p1.restrictedTraverse('image_thumb')
+        self.assertTrue(image_thumb().startswith('\x89PNG'))
 
     def test_image_thumb_no_image(self):
         """Test if traversing to image_thumb returns None if we have no image
