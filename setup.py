@@ -71,6 +71,7 @@ setup(name='sc.periodicals',
       extras_require={
           'test': [
               'plone.app.customerize',
+              'plone.app.robotframework',  # XXX: plone.app.event depends on this in Plone 5
               'plone.app.testing',
               'plone.browserlayer',
               'plone.registry',
