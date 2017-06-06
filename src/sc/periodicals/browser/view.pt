@@ -55,7 +55,7 @@
                                        item_modified item/ModificationDate;">
                     <div class="tileItem visualIEFloatFix"
                          tal:define="obj item/getObject;
-                                     image obj/view/getImage">
+                                     image obj/image">
                         <a href="#"
                            tal:condition="image"
                            tal:attributes="href item/getURL">

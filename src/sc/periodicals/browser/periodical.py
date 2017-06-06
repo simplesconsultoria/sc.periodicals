@@ -1,56 +1,45 @@
 # -*- coding: utf-8 -*-
-from Acquisition import aq_inner
 from collective.nitf.content import INITF
-from five import grok
-from plone.app.layout.viewlets.interfaces import IAboveContent
-from plone.directives import dexterity
+from plone import api
+from plone.app.layout.viewlets.common import ViewletBase
 from Products.CMFPlone.i18nl10n import monthname_msgid
 from Products.CMFPlone.i18nl10n import monthname_msgid_abbr
 from Products.CMFPlone.i18nl10n import weekdayname_msgid
 from Products.CMFPlone.i18nl10n import weekdayname_msgid_abbr
-from Products.CMFPlone.utils import getToolByName
+from Products.Five.browser import BrowserView
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from sc.periodicals.content import IPeriodical
-from sc.periodicals.interfaces import IPeriodicalLayer
 from zope.i18n import translate
-from zope.interface import Interface
 
 import re
 
 
-grok.templatedir('templates')
+class View(BrowserView):
 
+    """Default view."""
 
-class View(dexterity.DisplayForm):
-    """ Default view.
-    """
-    grok.context(IPeriodical)
-    grok.require('zope2.View')
-    grok.layer(IPeriodicalLayer)
+    index = ViewPageTemplateFile('view.pt')
 
-    def update(self):
-        self.context = aq_inner(self.context)
+    def __call__(self):
+        return self.index()
 
     def results(self, object_name=None):
-        """ Return a list of News Article brains inside the Periodical object.
-        """
-        catalog = getToolByName(self.context, 'portal_catalog')
+        """Return a list of News Article brains inside the Periodical object."""
         path = '/'.join(self.context.getPhysicalPath())
-        brains = catalog(object_provides=INITF.__identifier__, path=path, sort_on='getObjPositionInParent')
-        return brains
+        return api.content.find(
+            object_provides=INITF.__identifier__,
+            path=path,
+            sort_on='getObjPositionInParent'
+        )
 
 
-class PeriodicalHeader(grok.Viewlet):
+class PeriodicalHeader(ViewletBase):
+
     """A viewlet to include a header in the container (Periodical) and
     contained (News Article) elements.
     """
-    grok.name('sc.periodicals.periodicalheader')
-    grok.context(Interface)
-    grok.layer(IPeriodicalLayer)
-    grok.require('zope2.View')
-    grok.viewletmanager(IAboveContent)
 
     def update(self):
-        self.context = aq_inner(self.context)
         # is context a Periodical?
         self.is_periodical = IPeriodical.providedBy(self.context)
         # is context a News Article inside a Periodical?

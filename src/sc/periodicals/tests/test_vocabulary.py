@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-
 from sc.periodicals.testing import FUNCTIONAL_TESTING
-from sc.periodicals.vocab import thumbnail_sizes_vocabulary
+from sc.periodicals.vocabulary import thumbnail_sizes_vocabulary
 
 import unittest
 

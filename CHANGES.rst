@@ -4,6 +4,9 @@ Changelog
 1.0b2 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
+- Remove dependency on five.grok (closes `#11`_).
+  [rodfersou]
+
 - Remove hard dependency on plone.app.referenceablebehavior as Archetypes is no longer the default framework in Plone 5.
   Under Plone < 5.0 you should now explicitly add it to the `eggs` part of your buildout configuration to avoid issues while upgrading.
   [hvelarde]
@@ -22,7 +25,7 @@ Changelog
 ^^^^^^^^^^^^^^^^^^
 
 - Fix translation of weekdays on header viewlet; we were getting 'day' instead
-  of 'weakday' from publication date. [hvelarde]
+  of 'weekday' from publication date. [hvelarde]
 
 
 1.0a2 (2013-05-03)
@@ -58,3 +61,4 @@ Changelog
 - Initial release.
 
 .. _`#6`: https://github.com/simplesconsultoria/sc.periodicals/issues/6
+.. _`#11`: https://github.com/simplesconsultoria/sc.periodicals/issues/11

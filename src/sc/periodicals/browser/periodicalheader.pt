@@ -6,12 +6,12 @@
       i18n:domain="sc.periodicals">
 <body>
 
-<tal:viewlet condition="viewlet/available">
+<tal:viewlet condition="view/available">
   <div class="periodical-header">
-    <a href="" tal:attributes="href viewlet/periodical_url"></a>
-    <span i18n:translate="">Issue</span> <span tal:content="viewlet/number" />,
+    <a href="" tal:attributes="href view/periodical_url"></a>
+    <span i18n:translate="">Issue</span> <span tal:content="view/number" />,
     <span tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
-                      publication_date nocall:viewlet/publication_date"
+                      publication_date nocall:view/publication_date"
           tal:content="python:publication_date('%B %Y')" />
   </div>
 </tal:viewlet>

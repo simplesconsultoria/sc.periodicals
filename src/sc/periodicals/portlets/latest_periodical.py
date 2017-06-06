@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 from Acquisition import aq_inner
 from collective.nitf.content import INITF
 from plone.app.portlets.cache import render_cachekey
@@ -12,7 +11,6 @@ from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from sc.periodicals import _
 from sc.periodicals.content import IPeriodical
-from sc.periodicals.vocab import thumbnail_sizes_vocabulary
 from zope import schema
 from zope.formlib import form
 from zope.interface import implements
@@ -36,7 +34,7 @@ class ILatestPeriodicalPortlet(IPortletDataProvider):
             default=u'The scale of the image associated with the periodical.'),
         required=True,
         default='thumb',
-        source=thumbnail_sizes_vocabulary)
+        vocabulary='sc.periodicals.thumbnail_sizes_vocabulary')
 
     count = schema.Int(
         title=_(u'Number of items to display'),

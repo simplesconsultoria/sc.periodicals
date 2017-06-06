@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
-
-from five import grok
 from plone.app.textfield import RichText
+from plone.autoform import directives as form
 from plone.dexterity.content import Container
-from plone.directives import form
 from plone.namedfile.field import NamedBlobImage
+from plone.supermodel import model
 from sc.periodicals import _
 from zope import schema
+from zope.interface import implementer
 
 
 def has_image(periodical):
@@ -14,9 +14,8 @@ def has_image(periodical):
     return (image and image.getSize())
 
 
-class IPeriodical(form.Schema):
-    """A folderish content types to include articles in it.
-    """
+class IPeriodical(model.Schema):
+    """A folderish content types to include articles in it."""
 
     form.order_before(number='IDublinCore.title')
     number = schema.Int(
@@ -51,8 +50,8 @@ class IPeriodical(form.Schema):
     )
 
 
+@implementer(IPeriodical)
 class Periodical(Container):
-    grok.implements(IPeriodical)
 
     def image_thumb(self):
         """Return a thumbnail."""
