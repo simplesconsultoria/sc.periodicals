@@ -4,6 +4,9 @@ Changelog
 1.0b2 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
+- Fix static resources location (closes `#9`_).
+  [rodfersou]
+
 - Remove dependency on five.grok (closes `#11`_).
   [rodfersou]
 
@@ -61,4 +64,5 @@ Changelog
 - Initial release.
 
 .. _`#6`: https://github.com/simplesconsultoria/sc.periodicals/issues/6
+.. _`#9`: https://github.com/simplesconsultoria/sc.periodicals/issues/9
 .. _`#11`: https://github.com/simplesconsultoria/sc.periodicals/issues/11

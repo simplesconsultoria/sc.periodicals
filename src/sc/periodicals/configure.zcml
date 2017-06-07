@@ -20,7 +20,7 @@
       />
 
   <browser:resourceDirectory
-      name="sc.periodicals/"
+      name="sc.periodicals"
       directory="static"
       />
 
