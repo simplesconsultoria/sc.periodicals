@@ -4,6 +4,9 @@ Changelog
 1.0b2 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
+- Fix exception with localized dates (closes `#15`_).
+  [rodfersou]
+
 - Fix static resources location (closes `#9`_).
   [rodfersou]
 
@@ -66,3 +69,4 @@ Changelog
 .. _`#6`: https://github.com/simplesconsultoria/sc.periodicals/issues/6
 .. _`#9`: https://github.com/simplesconsultoria/sc.periodicals/issues/9
 .. _`#11`: https://github.com/simplesconsultoria/sc.periodicals/issues/11
+.. _`#15`: https://github.com/simplesconsultoria/sc.periodicals/issues/15

@@ -6,6 +6,7 @@ from Products.CMFPlone.i18nl10n import monthname_msgid
 from Products.CMFPlone.i18nl10n import monthname_msgid_abbr
 from Products.CMFPlone.i18nl10n import weekdayname_msgid
 from Products.CMFPlone.i18nl10n import weekdayname_msgid_abbr
+from Products.CMFPlone.utils import safe_unicode
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from sc.periodicals.content import IPeriodical
@@ -65,7 +66,7 @@ class PeriodicalHeader(ViewletBase):
     def _translate(self, msgid):
         return translate(msgid, 'plonelocales', context=self.request)
 
-    def publication_date(self, format=None):
+    def publication_date(self, format='%B %Y'):
         """Return the periodical publication date localized and in the format
         specified. For more information on format codes see:
         http://docs.python.org/2/library/datetime.html#strftime-strptime-behavior
@@ -88,5 +89,7 @@ class PeriodicalHeader(ViewletBase):
             # replace occurrences of directives with our translated strings
             prog = re.compile('|'.join(codes.keys()))
             result = prog.sub(lambda m: codes[m.group(0)], format)
+            # normalize to unicode then encode to utf-8
+            result = safe_unicode(result).encode('utf-8')
             # process the remaining format codes normally
             return periodical.publication_date.strftime(result)

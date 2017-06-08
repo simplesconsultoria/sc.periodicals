@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from datetime import datetime
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from Products.Five.browser import BrowserView as View
@@ -128,8 +129,8 @@ class ViewletTestCase(unittest.TestCase):
         viewlet.update()
         self.assertEqual(viewlet.number(), number)
 
-    def _test_publication_date(self):
-        publication_date = ''
+    def test_publication_date(self):
+        publication_date = datetime(2017, 6, 8, 15, 29)
         self.folder.invokeFactory(
             'Periodical', 'periodical', publication_date=publication_date)
 
@@ -141,7 +142,7 @@ class ViewletTestCase(unittest.TestCase):
         manager.update()
         viewlet = manager[self.viewlet_name]
         viewlet.update()
-        self.assertEqual(viewlet.number(), publication_date)
+        self.assertEqual(viewlet.publication_date(), 'June 2017')
 
         # now test in the context of a News Article
         self.folder.periodical.invokeFactory('collective.nitf.content', 'n1')
@@ -151,4 +152,7 @@ class ViewletTestCase(unittest.TestCase):
         manager.update()
         viewlet = manager[self.viewlet_name]
         viewlet.update()
-        self.assertEqual(viewlet.number(), publication_date)
+        self.assertEqual(viewlet.publication_date(), 'June 2017')
+
+        # simulate when localization gives some accents
+        self.assertEqual(viewlet.publication_date(format=u'Março %Y'), 'Março 2017')
