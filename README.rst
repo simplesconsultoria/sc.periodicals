@@ -7,20 +7,22 @@ sc.periodicals
 Life, the Universe, and Everything
 ----------------------------------
 
-This package defines a folderish content type that defines a Periodical. A
-periodical has a number, an image associated and a publication date; it can
-contain only News Articles as defined in the `collective.nitf`_ package.
+This package defines a folderish content type that defines a Periodical.
+A periodical has a number, an image associated and a publication date;
+it can contain only News Articles as defined in the `collective.nitf`_ package.
 
-The package also defines a portlet that displays the latest published
-periodical on the site.
+The package also defines a portlet that displays the latest published periodical on the site.
 
 Mostly Harmless
 ---------------
 
-.. image:: https://secure.travis-ci.org/simplesconsultoria/sc.periodicals.png?branch=master
+.. image:: http://img.shields.io/pypi/v/sc.periodicals.svg
+    :target: https://pypi.python.org/pypi/sc.periodicals
+
+.. image:: https://img.shields.io/travis/simplesconsultoria/sc.periodicals/master.svg
     :target: http://travis-ci.org/simplesconsultoria/sc.periodicals
 
-.. image:: https://coveralls.io/repos/simplesconsultoria/sc.periodicals/badge.png?branch=master
+.. image:: https://img.shields.io/coveralls/simplesconsultoria/sc.periodicals/master.svg
     :target: https://coveralls.io/r/simplesconsultoria/sc.periodicals
 
 Got an idea? Found a bug? Let us know by `opening a support ticket`_.
@@ -41,16 +43,15 @@ To enable this product in a buildout-based installation:
     eggs =
         sc.periodicals
 
-After updating the configuration you need to run ''bin/buildout'', which will
-take care of updating your system.
+After updating the configuration you need to run ''bin/buildout'',
+which will take care of updating your system.
 
 Go to the 'Site Setup' page in a Plone site and click on the 'Add-ons' link.
 
 Check the box next to ``sc.periodicals`` and click the 'Activate' button.
 
 .. Note::
-    You may have to empty your browser cache and save your resource registries
-    in order to see the effects of the product installation.
+    You may have to empty your browser cache and save your resource registries in order to see the effects of the product installation.
 
 Usage
 ^^^^^
@@ -60,8 +61,7 @@ TBA.
 Portlet
 +++++++
 
-The package includes a portlet that shows the latest published periodical and
-its contained news articles.
+The package includes a portlet that shows the latest published periodical and its contained news articles.
 
 - Go to the "Manage Portlets" page and select "Latest Periodical"
 - Enter a header (if needed), an image scale, the number of published News
