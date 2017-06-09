@@ -4,6 +4,9 @@ Changelog
 1.0b2 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
+- Remove old thumbnail vocabulary - replaced with plone.app.vocabularies.ImagesScales (closes `#17`_).
+  [rodfersou]
+
 - Fix exception with localized dates (closes `#15`_).
   [rodfersou]
 
@@ -70,3 +73,4 @@ Changelog
 .. _`#9`: https://github.com/simplesconsultoria/sc.periodicals/issues/9
 .. _`#11`: https://github.com/simplesconsultoria/sc.periodicals/issues/11
 .. _`#15`: https://github.com/simplesconsultoria/sc.periodicals/issues/15
+.. _`#17`: https://github.com/simplesconsultoria/sc.periodicals/issues/17

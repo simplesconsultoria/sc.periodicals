@@ -26,6 +26,5 @@
 
   <include file="profiles.zcml" />
   <include file="behavior.zcml" />
-  <include file="vocabulary.zcml" />
 
 </configure>

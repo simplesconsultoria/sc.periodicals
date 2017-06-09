@@ -1,9 +1,0 @@
-<configure xmlns="http://namespaces.zope.org/zope">
-
-  <utility
-      provides="zope.schema.interfaces.IContextSourceBinder"
-      component=".vocabulary.thumbnail_sizes_vocabulary"
-      name="sc.periodicals.thumbnail_sizes_vocabulary"
-      />
-
-</configure>

@@ -34,7 +34,7 @@ class ILatestPeriodicalPortlet(IPortletDataProvider):
             default=u'The scale of the image associated with the periodical.'),
         required=True,
         default='thumb',
-        vocabulary='sc.periodicals.thumbnail_sizes_vocabulary')
+        vocabulary='plone.app.vocabularies.ImagesScales')
 
     count = schema.Int(
         title=_(u'Number of items to display'),
