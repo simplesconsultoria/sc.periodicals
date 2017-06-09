@@ -4,6 +4,9 @@ Changelog
 1.0b2 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
+- Hide uninstall profile.
+  [hvelarde]
+
 - Use `plone.app.vocabularies.ImagesScales` vocabulary (closes `#17`_).
   [rodfersou]
 

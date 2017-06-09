@@ -9,13 +9,17 @@
       title="sc.periodicals"
       description="A content type to register periodicals of a publication."
       directory="profiles/default"
-      provides="Products.GenericSetup.interfaces.EXTENSION" />
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
 
   <genericsetup:registerProfile
       name="uninstall"
       title="sc.periodicals uninstall"
       directory="profiles/uninstall"
       description="Uninstall profile for the sc.periodicals package."
-      provides="Products.GenericSetup.interfaces.EXTENSION" />
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <utility factory=".setuphandlers.HiddenProfiles" name="sc.periodicals" />
 
 </configure>
