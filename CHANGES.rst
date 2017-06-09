@@ -4,7 +4,7 @@ Changelog
 1.0b2 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
-- Remove old thumbnail vocabulary - replaced with plone.app.vocabularies.ImagesScales (closes `#17`_).
+- Use `plone.app.vocabularies.ImagesScales` vocabulary (closes `#17`_).
   [rodfersou]
 
 - Fix exception with localized dates (closes `#15`_).
