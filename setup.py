@@ -3,7 +3,7 @@
 from setuptools import find_packages
 from setuptools import setup
 
-version = '1.1b1'
+version = '1.1b2.dev0'
 description = "A content type to register periodicals of a printed publication."
 long_description = (
     open('README.rst').read() + '\n' +
