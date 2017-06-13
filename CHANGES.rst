@@ -1,7 +1,7 @@
 Changelog
 ---------
 
-1.0b2 (unreleased)
+1.1b1 (2017-06-12)
 ^^^^^^^^^^^^^^^^^^
 
 - Hide uninstall profile.
