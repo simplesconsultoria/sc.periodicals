@@ -4,8 +4,8 @@ from collective.nitf.content import INITF
 from plone.app.portlets.cache import render_cachekey
 from plone.app.portlets.portlets import base
 from plone.memoize import ram
+from plone.memoize import view
 from plone.memoize.compress import xhtml_compress
-from plone.memoize.instance import memoize
 from plone.portlets.interfaces import IPortletDataProvider
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
@@ -13,12 +13,11 @@ from sc.periodicals import _
 from sc.periodicals.content import IPeriodical
 from zope import schema
 from zope.formlib import form
-from zope.interface import implements
+from zope.interface import implementer
 
 
 class ILatestPeriodicalPortlet(IPortletDataProvider):
-    """This portlet shows the latest published periodical.
-    """
+    """This portlet shows the latest published periodical."""
 
     header = schema.TextLine(
         title=_(u'Portlet header'),
@@ -49,14 +48,8 @@ class ILatestPeriodicalPortlet(IPortletDataProvider):
         required=False)
 
 
+@implementer(ILatestPeriodicalPortlet)
 class Assignment(base.Assignment):
-    """
-    Portlet assignment.
-    This is what is actually managed through the portlets UI and associated
-    with columns.
-    """
-
-    implements(ILatestPeriodicalPortlet)
 
     def __init__(self, header=u'', image_scale=None, count=5, text=u''):
 
@@ -67,18 +60,12 @@ class Assignment(base.Assignment):
 
     @property
     def title(self):
-        """This property is used to give the title of the portlet in the
-        "manage portlets" screen. Here, we use the title that the user gave.
-        """
         return _(u'Latest Periodical')
 
 
 class Renderer(base.Renderer):
 
     _template = ViewPageTemplateFile('latest_periodical.pt')
-
-    def __init__(self, *args):
-        base.Renderer.__init__(self, *args)
 
     @ram.cache(render_cachekey)
     def render(self):
@@ -93,6 +80,7 @@ class Renderer(base.Renderer):
     def title(self):
         return self.data.header
 
+    @view.memoize
     def get_latest_periodical(self):
         """
         @return: returns the catalog results (brains) if exists
@@ -104,20 +92,19 @@ class Renderer(base.Renderer):
             sort_order='reverse',
             review_state='published',
         )
-
+        assert results in (0, 1)
         return results[0] if results else None
 
     def published_news_articles(self):
         return self._data()
 
-    @memoize
     def _data(self):
         """
         @return:returns the articles in a periodical
         """
         periodical = self.get_latest_periodical()
         if periodical is None:
-            return []
+            return ()
 
         context = aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')
@@ -132,7 +119,7 @@ class Renderer(base.Renderer):
             sort_limit=count,
         )
 
-        return articles[:count] if articles else []
+        return articles[:count] if articles else ()
 
     def get_image_scale(self):
         return self.data.image_scale
@@ -148,6 +135,7 @@ class Renderer(base.Renderer):
         orig = self.data.text
         if not orig:
             orig = u''
+
         context = aq_inner(self.context)
         if not isinstance(orig, unicode):
             # Apply a potentially lossy transformation, and hope we stored
@@ -158,10 +146,9 @@ class Renderer(base.Renderer):
 
         # Portal transforms needs encoded strings
         orig = orig.encode('utf-8')
-
         transformer = getToolByName(context, 'portal_transforms')
-        data = transformer.convertTo(mt, orig,
-                                     context=context, mimetype='text/html')
+        data = transformer.convertTo(
+            mt, orig, context=context, mimetype='text/html')
         result = data.getData()
         if result:
             if isinstance(result, str):
@@ -171,7 +158,7 @@ class Renderer(base.Renderer):
 
     def get_periodical_title(self):
         periodical = self.get_latest_periodical()
-        return periodical.Title if periodical is not None else None
+        return periodical.Title if periodical else ''
 
 
 class AddForm(base.AddForm):

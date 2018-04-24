@@ -4,7 +4,8 @@ Changelog
 1.1b2 (unreleased)
 ^^^^^^^^^^^^^^^^^^
 
-- Nothing changed yet.
+- Avoid using an instance memoizer in the portlet as it could cause harm.
+  [hvelarde]
 
 
 1.1b1 (2017-06-12)
