@@ -7,10 +7,12 @@ cache:
   - parts/node
 env:
   - PLONE_VERSION=4.3
-  - PLONE_VERSION=5.0
   - PLONE_VERSION=5.1
 matrix:
   fast_finish: true
+before_install:
+# FIXME: I have no idea how and why six==1.11.0 i being installed
+- pip uninstall -y six
 install:
 - sed -ie "s#test-4.3#test-$PLONE_VERSION#" buildout.cfg
 - python bootstrap.py
@@ -20,7 +22,7 @@ script:
 - bin/code-analysis
 - bin/test
 after_success:
-- bin/createcoverage -t "--layer=!Robot"
+- bin/createcoverage --output-dir=htmlcov
 - pip install coveralls
 - coveralls
 notifications:
