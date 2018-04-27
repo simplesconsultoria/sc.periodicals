@@ -30,7 +30,7 @@ class View(BrowserView):
         return api.content.find(
             object_provides=INITF.__identifier__,
             path=path,
-            sort_on='getObjPositionInParent'
+            sort_on='getObjPositionInParent',
         )
 
 

@@ -171,8 +171,7 @@ class RenderTest(unittest.TestCase):
         catalog_results = self.catalog(**query)
         self.assertEqual(
             [i.id for i in r1.published_news_articles()],
-            [i.id for i in catalog_results]
-        )
+            [i.id for i in catalog_results])
 
     def test_text_in_portlet(self):
 
